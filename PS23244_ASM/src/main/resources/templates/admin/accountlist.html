@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/layout.html :: admin(~{::body})}">
+<head>
+<title>Tài Khoản</title>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+	<div class="wrapper">
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section>
+				<div class="content-header">
+					<div class="container-fluid">
+						<table class="table bg-white table-border table-striped custab text-center">
+							<thead>
+								<a th:href="@{/account/controller}" class="btn bg-gra-03 mb-3 btn-xs pull-right p-2">
+									<b>+</b> Thêm mới tài khoản
+								</a>
+								<tr>
+									<th>Tài khoản</th>
+									<th>Mật khẩu</th>
+									<th>Họ tên</th>
+									<th>Email</th>
+									<th>Ảnh</th>
+									<th>Admin</th>
+									<th>Trạng thái</th>
+									<th class="text-center"></th>
+								</tr>
+							</thead>
+							<tr th:each="item : ${page.content}" style="height: 30px; line-height: 30px;">
+								<td th:text="${item.username}"></td>
+								<td th:text="${item.password}"></td>
+								<td th:text="${item.fullname}"></td>
+								<td th:text="${item.email}"></td>
+								<td>
+									<img alt="" th:src="@{|/image/${item.photo}|}" style="width: 50px">
+								</td>
+								<td th:text="${item.activated}"></td>
+								<td th:text="${item.admin}"></td>
+								<td class="text-center">
+									<a class='btn btn-info btn-xs' th:href="@{|/account/edit/${item.username|}">
+										<i class="bi bi-pencil-square"></i> Sửa
+									</a>
+									<a th:href="@{|/account/delete/${item.username|}" type="sunmit" class="btn btn-danger btn-xs">
+										<i class="bi bi-x-lg"></i> Xóa
+									</a>
+								</td>
+							</tr>
+						</table>
+						<div class=" text-center">
+							<a th:href="@{|/account/list?p=0|}" class="btn btn-success"> First </a>
+							<a th:href="@{|/account/list?p=${page.number-1}|}" class="btn btn-primary"> Previous </a>
+							<a th:href="@{|/account/list?p=${page.number+1}|}" class="btn btn-danger"> Next </a>
+							<a th:href="@{|/account/list?p=${page.totalPages-1}|}" class="btn btn-warning"> Last</a>
+						</div>
+						<!-- /.Left col -->
+						<!-- right col (We are only adding the ID to make the widgets sortable)-->
+					</div>
+					<!-- /.row (main row) -->
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+	</div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-	package com.ps23244.controller.admin;
+package com.ps23244.controller.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,5 +10,5 @@ public class AdminController {
 	public String index() {
 		return "admin/index";
 	}
-	
+
 }

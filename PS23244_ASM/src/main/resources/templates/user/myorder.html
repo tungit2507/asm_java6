@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout.html :: user(~{::body})}">
+<head>
+<meta charset="UTF-8">
+<title>Đơn Hàng</title>
+</head>
+<body style="background-color: #f2f2f2;">
+
+	<!-- <header>
+    <div th:replace="user/menu/header.html"></div>
+</header>
+<nav class="navbar navbar-expand-lg text-center bg-dark">
+    <div th:replace="user/menu/nav.html"></div>
+</nav> -->
+
+	<div class="page-wrapper  p-t-45">
+		<div class="wrapper wrapper--w790">
+			<table class="table bg-white table-border table-striped custab text-center">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Mã đơn hàng</th>
+						<th>Ngày tạo</th>
+						<th>Số điện thoại</th>
+						<th>Địa chỉ</th>
+						<th>Đơn hàng</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:set var="i" value="0" />
+					<c:forEach var="item" items="${items}">
+						<tr th:each="item, i : ${items}" style="height: 40px; line-height: 40px;">
+							<td class="p-price text-dark" th:text="${i.index + 1}"></td>
+							<td class="p-price first-row" th:text="${item.id}"></td>
+							<td class="p-price text-dark first-row" th:text="${item.createDate}"></td>
+							<td class="p-price text-dark" th:text="${item.sdt}"></td>
+							<td class="cart-title first-row text-dark" th:text="${item.address}"></td>
+							<td class="total-price first-row">
+								<a class="text-decoration-none" th:href="@{/home/myOrderDetail(id=${item.id})}" style="font-size: 14px">Chi tiết đơn hàng</a>
+							</td>
+							<td>
+								<div th:if="${!item.confirmation}">
+									<a href="/home/delete/${item.id}" class="btn btn-danger" th:attr="onclick='return confirm(`Bạn có chắc muốn hủy  đơn hàng này?`)`'"> Hủy
+										đơn hàng </a>
+								</div>
+							</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- 
+<footer>
+    <div th:replace="user/menu/footer.html"></div>
+</footer> -->
+</body>
+</html>

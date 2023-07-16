@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+
+</head>
+<body>
+	<div th:fragment="header">
+		<header class="text-center" style="background-color: rgb(178, 6, 11);">
+			<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item active" data-bs-interval="3000">
+						<img th:src="@{/image/header_1.jpg}" class="d-block w-100" alt="...">
+					</div>
+					<div class="carousel-item" data-bs-interval="3000">
+						<img th:src="@{/image/header_2.jpg}" class="d-block w-100" alt="...">
+					</div>
+				</div>
+			</div>
+		</header>
+
+	</div>
+</body>
+</html>

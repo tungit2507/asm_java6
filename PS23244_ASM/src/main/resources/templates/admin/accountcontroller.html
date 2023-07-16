@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/layout.html :: admin(~{::body})}">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Tài Khoản</title>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section>
+				<div class="content-header">
+					<div class="container-fluid">
+
+
+						<div class="page-wrapper bg-gra-03 " style="height: 600px">
+							<!-- <nav class="navbar navbar-dark bg-dark">
+		</nav> -->
+
+							<div class="container" id="main-content" style="padding-top: 40px">
+								<div class="row">
+									<!-- LEFT AREA -->
+									<div class="col-md-4"></div>
+
+									<!-- RIGHT AREA -->
+									<div class="col-md-4">
+										<a th:href="@{/account/list}" class="btn bg-gra-03 p-2 mb-3 btn-xs pull-right"> Danh sách tài khoản </a>
+
+										<form th:action="@{/account/list}" th:object="${item}" method="post">
+											<div class="form-group">
+												<input class="form-control" th:path="username" placeholder="Tài khoản" />
+												<div th:if="${#fields.hasErrors('username')}" class="text-danger">
+													<ul>
+														<li th:each="error : ${#fields.errors('username')}" th:text="${error}" />
+													</ul>
+												</div>
+											</div>
+											<div class="form-group">
+												<input type="password" class="form-control" th:path="password" placeholder="Mật khẩu" />
+												<div th:if="${#fields.hasErrors('password')}" class="text-danger">
+													<ul>
+														<li th:each="error : ${#fields.errors('password')}" th:text="${error}" />
+													</ul>
+												</div>
+											</div>
+											<div class="form-group">
+												<input class="form-control" th:path="fullname" placeholder="Họ tên" />
+												<div th:if="${#fields.hasErrors('fullname')}" class="text-danger">
+													<ul>
+														<li th:each="error : ${#fields.errors('fullname')}" th:text="${error}" />
+													</ul>
+												</div>
+
+											</div>
+											<div class="form-group">
+												<input type="email" class="form-control" th:path="email" placeholder="Email" />
+												<div th:if="${#fields.hasErrors('fullname')}" class="text-danger">
+													<ul>
+														<li th:each="error : ${#fields.errors('fullname')}" th:text="${error}" />
+													</ul>
+												</div>
+											</div>
+											<div class="form-group">
+												<input type="file" th:path="photo" aria-describedby="imageHid" placeholder="image" />
+												<div th:if="${#fields.hasErrors('photo')}" class="text-danger">
+													<ul>
+														<li th:each="error : ${#fields.errors('photo')}" th:text="${error}" />
+													</ul>
+												</div>
+											</div>
+											<div class="form-group">
+												Activity:
+												<div class="mx-2">
+													<div th:each="activatedOption : ${activateds}">
+														<input type="radio" th:field="*{activated}" th:value="${activatedOption}" />
+														<label th:for="${#ids.next('activated')}" th:text="${activatedOption}"></label>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												Role:
+												<div class="mx-2">
+													<div th:each="adminOption : ${admins}">
+														<input type="radio" th:field="*{admin}" th:value="${adminOption}" />
+														<label th:for="${#ids.next('admin')}" th:text="${adminOption}"></label>
+													</div>
+												</div>
+											</div>
+											<div class="form-group text-center">
+												<button type="submit" class="btn btn-success" th:formaction="@{/account/create}">
+													<i class="fa fa-plus-square"></i> Create
+												</button>
+												<button type="submit" class="btn btn-primary" th:formaction="@{/account/update}">
+													<i class="fa fa-save"></i> Update
+												</button>
+												<a type="button" class="btn btn-danger" th:href="@{|/account/delete/${item.username}|}">
+													<i class="bi bi-trash3"></i> Delete
+												</a>
+												<button type="submit" class="btn btn-warning" style="color: white" th:formaction="@{/account/controller}">
+													<i class="bi bi-x-square"></i> New
+												</button>
+											</div>
+										</form>
+									</div>
+									<div class="col-md-4"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /.row (main row) -->
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+	</div>
+</body>
+</html>
