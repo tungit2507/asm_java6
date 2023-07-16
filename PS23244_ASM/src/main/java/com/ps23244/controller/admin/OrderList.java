@@ -30,8 +30,13 @@ public class OrderList {
 
 	@RequestMapping("/list")
 	public String index(Model model, @RequestParam("p") Optional<Integer> p,
-	        @RequestParam("field") Optional<String> field, @RequestParam("sort") Optional<String> sort) {
-Sort.Direction direction = Sort.Direction.DESC;
+	    
+			@RequestParam("field") Optional<String> field, @RequestParam("sort") Optional<String> sort) {
+		
+		List<Order> list = dao.findAll();
+		model.addAttribute("orderList", list);
+		
+		Sort.Direction direction = Sort.Direction.DESC;
 		
 	    Order item = new Order();
 	    model.addAttribute("item", item);
