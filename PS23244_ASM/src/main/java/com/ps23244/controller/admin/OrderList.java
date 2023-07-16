@@ -32,8 +32,14 @@ public class OrderList {
 	public String index(Model model, @RequestParam("p") Optional<Integer> p,
 	        @RequestParam("field") Optional<String> field, @RequestParam("sort") Optional<String> sort) {
 Sort.Direction direction = Sort.Direction.DESC;
-		
-	    Order item = new Order();
+
+		List<Order> list = dao.findAll();
+		model.addAttribute("orderList", list);
+		model.addAttribute("order", list.get(p.orElse(0)));
+
+
+
+		Order item = new Order();
 	    model.addAttribute("item", item);
 	 
 

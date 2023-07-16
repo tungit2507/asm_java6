@@ -45,6 +45,8 @@ public class LoginController {
 	public String loginPost(Model model) {
 		String username = paramService.getString("username", "");
 		String password = paramService.getString("password", "");
+
+
 		boolean remember = paramService.getBoolean("remember", false);
 		try {
 			Account user = accDAO.findById(username).get();
