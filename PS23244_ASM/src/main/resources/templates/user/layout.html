@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org" th:fragment="user(view)">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="shortcut icon" type="image/png" href="/image/icon.png" />
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/icon/bootstrap-icons.css">
+<link rel="stylesheet" href="/css/orderdetail.css">
+
+<style type="text/css">
+.page-wrapper {
+	min-height: 60vh;
+}
+
+#slider-range {
+	width: 300px;
+	margin: 10px auto;
+}
+
+.ui-slider .ui-slider-handle {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: white;
+	border: none;
+	cursor: pointer;
+}
+
+.ui-slider .ui-slider-handle:hover, .ui-slider .ui-slider-handle:active
+	{
+	background-color: white;
+	border-color: white;
+}
+
+.ui-slider .ui-slider-range {
+	background: -webkit-gradient(linear, left bottom, right top, from(#08aeea),
+		to(#b721ff));
+	background: -webkit-linear-gradient(bottom left, #08aeea 0%, #b721ff 100%);
+	background: -moz-linear-gradient(bottom left, #08aeea 0%, #b721ff 100%);
+	background: -o-linear-gradient(bottom left, #08aeea 0%, #b721ff 100%);
+	background: linear-gradient(to top right, #08aeea 0%, #b721ff 100%);
+}
+
+#price-min, #price-max {
+	display: inline-block;
+	width: 100px;
+	text-align: center;
+	font-size: 12px
+}
+</style>
+</head>
+<body>
+	<header th:insert="~{/user/menu/header.html :: header}"> </header>
+
+	<nav class="navbar navbar-expand-lg text-center bg-dark" th:insert="~{/user/menu/nav.html :: nav}"></nav>
+
+	<main th:replace="${view}"></main>
+
+	<footer th:insert="~{/user/menu/footer.html :: footer}"> </footer>
+
+
+
+	<script src="/js/bootstrap.bundle.min.js"></script>
+	<script src="/js/jquery-3.3.1.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery-ui.min.js"></script>
+	<script src="/js/jquery.countdown.min.js"></script>
+	<script src="/js/jquery.nice-select.min.js"></script>
+	<script src="/js/jquery.zoom.min.js"></script>
+	<script src="/js/jquery.dd.min.js"></script>
+	<script src="/js/jquery.slicknav.js"></script>
+	<script src="/js/owl.carousel.min.js"></script>
+	<script src="/js/main.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+</body>
+</html>

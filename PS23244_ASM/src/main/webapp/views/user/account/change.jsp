@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="../views/icon/bootstrap-icons.css">
 </head>
 <body style="background-color: #f2f2f2;">
-    <header>
+    <%-- <header>
         <jsp:include page="../menu/header.jsp" />
     </header>
 
     <nav class="navbar navbar-expand-lg text-center bg-dark">
         <jsp:include page="../menu/nav.jsp" />
 
-    </nav>
+    </nav> --%>
 
     <div class="position-absolute top-50 start-50 translate-middle">
         <div class="card" style="width: 400px;">

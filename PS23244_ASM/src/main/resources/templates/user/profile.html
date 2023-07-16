@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org" th:replace="~{/user/layout.html :: user(~{::body})}">
+<head>
+<meta charset="UTF-8">
+<title>Thông Tin</title>
+</head>
+<body style="background-color: #f2f2f2;">
+
+
+	<section class="contact-section spad">
+		<div class="container">
+
+			<div class="page-wrapper  p-t-45 p-b-50">
+				<div class="wrapper wrapper--w790">
+					<div class="card card-5">
+						<div class="card-heading">
+							<h2 class="title">Thông Tin</h2>
+						</div>
+						<div class="card-body">
+						
+							<div class="form-row">
+								<div class="name">Tên tài khoản</div>
+								<div class="value">
+									<div class="input-group">
+										<input class="input--style-5" th:value="${username}" disabled type="text" name="">
+									</div>
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="name">Họ Tên</div>
+								<div class="value">
+									<div class="input-group">
+										<input class="input--style-5" th:value="${fullname}" disabled type="text" name="">
+									</div>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="name">Email</div>
+								<div class="value">
+									<div class="input-group">
+										<input class="input--style-5" th:value="${email}" disabled type="email" name="">
+									</div>
+								</div>
+							</div>
+							<form th:action="@{/home/myorder}" method="post">
+								<input type="hidden" name="username" th:value="${username}" th:onblur="this.form.submit()">
+								<button class="btn bg-gra-03 text-light" style="font-size: 20px; font-weight: bolder; margin-left: 230px">Đơn hàng của tôi</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+</body>
+</html>

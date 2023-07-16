@@ -15,9 +15,6 @@
 </head>
 <body>
 
-
-
-
 <!-- Shopping Cart Section Begin -->
 <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
         <div class="wrapper wrapper--w790">

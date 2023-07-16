@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+   <link rel="shortcut icon" type="image/png" href="../admin/dist/img/iconadmin.png"/>
+<title>Đơn Hàng</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../admin/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- ./wrapper -->
+
+ <link rel="stylesheet" href="../admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../admin/Wplugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="../adminp/lugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../admin/dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="../admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="../admin/plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="../admin/plugins/summernote/summernote-bs4.min.css">
+  
+  
+    <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../icon/bootstrap-icons.css">
+  <link rel="stylesheet" href="../css/productlist.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+	<!-- Navbar -->
+	<nav th:replace="~{/menu/nav}" />
+	<!-- /.navbar -->
+
+	<!-- Aside -->
+	<aside th:replace="~{/menu/aside}" />
+	<!-- /. Aside -->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section>
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row">
+			<div class="col-md-10 offset-md-1">
+				<div class="col row" >
+					<div class="col-3  alert alert-info">
+						<h3 class="text-center">Đơn Hàng</h3>
+						<h5>Mã loại:<h5 th:text="${ord.id}"/></h5>
+						<h5>Ngày tạo: <h5 th:text="${ord.createDate}"/></h5>
+					</div>
+					<div class="col-4 offset-5 alert alert-primary">
+						<h3 class="text-center">Khách Hàng</h3>
+						<h5>Tài khoản: <h5 th:text="${ord.account.username }"/></h5>
+						<h5>Họ tên: <h5 th:text="${ord.account.fullname }"/></h5>
+						<h5>Số điện thoại: <h5 th:text="${ord.sdt}"/></h5>
+						<h5>Địa chỉ: <h5 th:text="${ord.address }"/></h5>
+						<h5>Email: <h5 th:text="${ord.account.email }"/></h5>
+					</div>
+				</div>
+				</div>
+				
+				<table class="table bg-white table-border table-striped custab text-center">
+					<thead>
+						<tr>
+							<th style="font-weight: bolder; font-size: 18px">Mã đơn hàng chi tiết
+								ID</th>
+							<th style="font-weight: bolder; font-size: 18px">Ảnh
+								</th>
+							<th style="font-weight: bolder; font-size: 18px">Mã sản phẩm</th>
+							<th style="font-weight: bolder; font-size: 18px">Tên sản phẩm
+								</th>
+							<th style="font-weight: bolder; font-size: 18px">Giá
+								</th>
+							<th style="font-weight: bolder; font-size: 18px">Số Lượng</th>
+							<th style="font-weight: bolder; font-size: 18px">Mã đơn hàng</th>
+						</tr>
+					</thead>
+					<tbody th:each="item, state : ${page.content}">
+							<tr style=" height: 20px; line-height: 40px;">
+								<td th:text="${item.id}"></td>
+								<td><img th:src="@{|/image/${item.product.image}|}"
+									alt="" style="width: 50px" /></td>
+								<td th:text="${item.product.id}"></td>
+								<td th:text="${item.product.name}"></td>
+								<td th:text="${item.product.price}"></td>
+								<td th:text="${item.quantity }"> </td>
+								<td th:text="${item.order.id}"></td>
+							</tr>
+					</tbody>
+				</table>
+				</div>
+        
+            
+          <!-- /.Left col -->
+          <!-- right col (We are only adding the ID to make the widgets sortable)-->
+          
+        </div> <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+ <footer th:fragment="~{/menu/footer}"/>
+
+  <!-- Control Sidebar -->
+  
+</div>
+
+
+
+<script src="../admin/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="../admin/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="../admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Sparkline -->
+<script src="../admin/plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="../admin/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="../admin/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="../admin/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="../admin/plugins/moment/moment.min.js"></script>
+<script src="../admin/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="../admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="../admin/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="../admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../admin/dist/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="../admin/dist/js/pages/dashboard.js"></script>
+</body>
+</html>
