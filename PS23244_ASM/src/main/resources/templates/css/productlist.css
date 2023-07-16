@@ -1,0 +1,45 @@
+button {
+  outline: none;
+  background: none;
+  border: none;
+} 
+.btn--radius-2 {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.btn--pill {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+.btn--black {
+  background: #888888;
+}
+.btn--black:hover{
+background: #7a7a7a;
+}
+
+.btn--green {
+  background: #57b846;
+}
+
+.btn--green:hover {
+  background: #4dae3c;
+}
+
+.btn--blue {
+  background: #4272d7;
+}
+
+.btn--blue:hover {
+  background: #3868cd;
+}
+
+.btn--red {
+  background: #ff4b5a;
+}
+
+.btn--red:hover {
+  background: #eb3746;
+}
