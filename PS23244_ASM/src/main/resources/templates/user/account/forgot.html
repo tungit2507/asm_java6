@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout.html :: user(~{::body})}">
+<head>
+<meta charset="utf-8">
+<title>Quên mật khẩu</title>
+</head>
+<body>
+<body style="background-color: #f2f2f2;">
+	<div  class="d-flex justify-content-center mt-5">
+		<div class="card" style="width: 400px;">
+			<form th:action="@{/forgot-password}" class="px-4 py-3" method="post">
+				<div class=" fs-5 mb-4 text-center">
+					<span class="fw-bold"> Quên mật khẩu</span>
+				</div>
+				<h5 class="text-danger">[[${message }]]</h5>
+				<div class="mb-3">
+					<input type="text" name="username" class="form-control mb-3" id="exampleDropdownFormEmail1" placeholder="Nhập username">
+					<input type="email" name="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="Nhập email">
+				</div>
+				<div class="row mb-3 ">
+					<div class="col-md-7"></div>
+					<div class="col-md-5">
+
+						<div class="mt-0 d-flex flex-row-reverse bd-highlight ">
+							<div class="hover">
+								<label for="">
+									<a class="text-decoration-none" th:href="@{/home/change-password}">Thay đổi mật khẩu</a>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mb-3">
+
+					<button type="submit" class="btn " style="width: 350px; background-color: #be1e2d;">
+						<span class="fs-5 fw-bold text-light">LẤY LẠI MẬT KHẨU</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</body>
+</html>

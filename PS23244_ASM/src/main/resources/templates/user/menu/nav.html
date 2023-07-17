@@ -12,7 +12,7 @@
 			<ul class="navbar-nav   mb-lg-0 ">
 				<li class="nav-item me-2">
 					<a class="nav-link active" href="/home/index">
-						<img th:src="@{/views/image/logo-ddv.jpg}" alt="">
+						<img th:src="@{/image/logo-ddv.jpg}" alt="">
 					</a>
 				</li>
 				<li class="nav-item dropdown me-2 m-1">
@@ -73,20 +73,21 @@
 						giỏ hàng
 					</a>
 				</li>
-				<li class="nav-item me-2 m-1" th:if="${isLogin}">
-				<li th:if="${admin}">
-					<a href="/admin/index" class="login-panel text-white text-decoration-none">
-						<i class="bi bi-person-fill"></i> Admin
-					</a>
-				</li>
-				<div class="top-social" style="padding-top: 10px">
-					<a href="/home/profile" class="text-primary text-decoration-none" style="font-weight:;">[[${fullname}]]</a>
-					<span style="color: white">|</span>
-					<a class="text-danger text-decoration-none" id="btnLogOff" href="/home/logout" title="">Đăng xuất</a>
-				</div>
-				</li>
+				<ul class="nav-item me-2 m-1" th:if="${isLogin}">
+					<li th:if="${admin}">
+						<a th:href="@{/admin/index}" class="login-panel text-white text-decoration-none">
+							<i class="bi bi-person-fill"></i> Admin
+						</a>
+					</li>
+					<div class="top-social" style="padding-top: 10px" th:if="${isLogin}">
+						<a th:href="@{/home/profile}" class="text-primary text-decoration-none" th:text="${fullname}"></a>
+						<span style="color: white">|</span>
+						<a class="text-danger text-decoration-none" id="btnLogOff" th:href="@{/home/logout}" title="">Đăng xuất</a>
+					</div>
+				</ul>
+
 				<li class="nav-item me-2 m-1" th:if="${!isLogin}">
-					<a class="nav-link active text-light" href="/home/login">
+					<a class="nav-link active text-light" th:href="@{/home/login}">
 						<i class="bi bi-person-circle"></i> Đăng nhập
 					</a>
 				</li>

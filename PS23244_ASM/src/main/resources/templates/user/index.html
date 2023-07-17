@@ -5,139 +5,11 @@
 <title>Trang Chủ</title>
 </head>
 <body style="background-color: #f2f2f2;">
-
-	<!-- <header>
-    <div th:replace="user/menu/header"></div>
-</header>
-<nav class="navbar navbar-expand-lg text-center bg-dark">
-    <div th:replace="user/menu/nav"></div>
-</nav>
- -->
-
-	<!-- <div class="me-5 ms-5">
-    <section class="mt-3 " >
-        <div th:insert="user/menu/section.html"></div>
-    </section>
-</div> -->
-
 	<div class="me-5 ms-5">
 		<section class="mt-3 ">
 			<div th:insert="~{/user/menu/section.html :: section}"></div>
 		</section>
 	</div>
-
-
-<div class="me-5 ms-5 bg-white">
-    <section class="mt-3">
-        <div class="navbar navbar-expand-lg " style="background-color: #be1e2d;">
-            <div class="container-fluid">
-                <div class="text-light fw-bold fs-4">Điện thoại nổi bật</div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <!-- Sản Phẩm 1 -->
-            <div th:each="product : ${productstop5}" class="col-md-3">
-                <div>
-                    <span class="border border-warning" style="color: #be1e2d;">Trả góp 0%</span>
-                    <span class="ms-2 bg-danger w-50 text-light"
-                          th:text="'Giảm ' + (${product.sale - product.price}) + ' đ'"></span>
-                </div>
-                <div class="p-3">
-                    <a th:href="@{'/product/detail/' + ${product.id}}">
-                        <img th:src="@{'/views/image/' + ${product.image}}" class="w-100 " alt="">
-                    </a>
-                </div>
-                <img th:src="@{/views/image/tetsieukm.png}" class="ms-2 w-50 h-5" alt="">
-                <div class="ms-2  me-5">
-                    <a th:href="@{'/product/detail/' + ${product.id}}" class="text-decoration-none"
-                       th:text="${product.name}"></a>
-                </div>
-                <div class="ms-2 fw-bold" style="color: #be1e2d;" th:text="${product.price} + ' đ'"></div>
-                <div class="ms-2 text-decoration-line-through text-muted" th:text="${product.sale} + ' đ'"></div>
-                <div class="ms-2 me-5 bg-light fs-6">Tặng thêm đến 1 triệu khi Thu đổi mới. giảm thêm 800.000đ khi mở thẻ TPBank</div>
-                <a th:href="@{'/home/cart/add/' + ${product.id}}" class="btn btn-outline-danger mt-1 mb-2">Thêm giỏ
-                    hàng</a>
-            </div>
-        </div>
-    </section>
-</div>
-
-
-	<!-- <div class="me-5 ms-5 bg-white">
-		<section class="mt-3">
-			<div class="navbar navbar-expand-lg " style="background-color: #be1e2d;">
-				<div class="container-fluid">
-					<div class="text-light fw-bold fs-4">iPhone N/A</div>
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-					>
-						<span class="navbar-toggler-icon"></span>
-					</button>
-				</div>
-			</div>
-			<div class="row m-3 bg-white">
-				Sản phẩm 1
-				<div th:each="product : ${products}" class="col-md-3">
-					<div class="ms-2 bg-danger w-50 text-light" th:text="'Giảm ' + (${product.sale - product.price}) + ' đ'"></div>
-					<div class="p-3">
-						<a th:href="@{'/product/detail/' + ${product.id}}">
-							<img th:src="@{'/views/image/' + ${product.image}}" class="w-100 " alt="">
-						</a>
-					</div>
-					<img th:src="@{/views/image/labelapple.png}" class="ms-2 w-50 h-5" alt="">
-					<div class="ms-2  me-5">
-						<a th:href="@{'/product/detail/' + ${product.id}}" class="text-decoration-none" th:text="${product.name}"></a>
-					</div>
-					<div class="ms-2 fw-bold" style="color: #be1e2d;" th:text="${product.price} + ' đ'"></div>
-					<div class="ms-2 text-decoration-line-through text-muted" th:text="${product.sale} + ' đ'"></div>
-					<div class="ms-2 me-5 bg-light fs-6">Tặng thêm đến 1 triệu khi Thu đổi mới. giảm thêm 800.000đ khi mở thẻ TPBank</div>
-					<a th:href="@{'/home/cart/add/' + ${product.id}}" class="btn btn-outline-danger mt-1 mb-2">Thêm giỏ hàng</a>
-				</div>
-			</div>
-		</section>
-	</div>
-
-	<div class="me-5 ms-5 bg-white">
-		<section class="mt-3">
-			<div class="navbar navbar-expand-lg " style="background-color: #be1e2d;">
-				<div class="container-fluid">
-					<div class="text-light fw-bold fs-4">Điện thoại nổi bật</div>
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-					>
-						<span class="navbar-toggler-icon"></span>
-					</button>
-				</div>
-			</div>
-			<div class="row mt-3">
-				Sản Phẩm 1
-				<div th:each="product : ${productstop5}" class="col-md-3">
-					<div>
-						<span class="border border-warning" style="color: #be1e2d;">Trả góp 0%</span>
-						<span class="ms-2 bg-danger w-50 text-light" th:text="'Giảm ' + (${product.sale - product.price}) + ' đ'"></span>
-					</div>
-					<div class="p-3">
-						<a th:href="@{'/product/detail/' + ${product.id}}">
-							<img th:src="@{'/views/image/' + ${product.image}}" class="w-100 " alt="">
-						</a>
-					</div>
-					<img th:src="@{/views/image/tetsieukm.png}" class="ms-2 w-50 h-5" alt="">
-					<div class="ms-2  me-5">
-						<a th:href="@{'/product/detail/' + ${product.id}}" class="text-decoration-none" th:text="${product.name}"></a>
-					</div>
-					<div class="ms-2 fw-bold" style="color: #be1e2d;" th:text="${product.price} + ' đ'"></div>
-					<div class="ms-2 text-decoration-line-through text-muted" th:text="${product.sale} + ' đ'"></div>
-					<div class="ms-2 me-5 bg-light fs-6">Tặng thêm đến 1 triệu khi Thu đổi mới. giảm thêm 800.000đ khi mở thẻ TPBank</div>
-					<a th:href="@{'/home/cart/add/' + ${product.id}}" class="btn btn-outline-danger mt-1 mb-2">Thêm giỏ hàng</a>
-				</div>
-			</div>
-		</section>
-	</div> -->
 
 	<div class="me-5 ms-5 bg-white">
 		<section class="mt-3">
@@ -160,7 +32,7 @@
 							<img th:src="@{'/image/' + ${product.image}}" class="w-100" alt="">
 						</a>
 					</div>
-					<img src="/image/labelapple.png" class="ms-2 w-50 h-5" alt="">
+					<img th:src="@{/image/labelapple.png}" class="ms-2 w-50 h-5" alt="">
 
 					<div class="ms-2  me-5">
 						<a th:href="@{'product/detail/' + ${product.id}}" class="text-decoration-none" th:text="${product.name}"></a>
@@ -202,7 +74,7 @@
 							<img th:src="@{'/image/' + ${product.image}}" class="w-100" alt="">
 						</a>
 					</div>
-					<img src="../views/image/tetsieukm.png" class="ms-2 w-50 h-5" alt="">
+					<img th:src="@{/image/tetsieukm.png}" class="ms-2 w-50 h-5" alt="">
 
 					<div class="ms-2  me-5">
 						<a th:href="@{'product/detail/' + ${product.id}}" class="text-decoration-none" th:text="${product.name}"></a>
@@ -219,7 +91,6 @@
 			</div>
 		</section>
 	</div>
-
 
 	<div class="mt-3 me-5 ms-5">
 		<div th:insert="~{/user/menu/section1.html :: section1}"></div>
