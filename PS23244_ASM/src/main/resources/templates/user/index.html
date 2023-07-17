@@ -116,10 +116,10 @@
 					<div class="ms-2 bg-danger w-50 text-light" th:text="'Giảm ' + (${product.sale} - ${product.price}) + ' đ'"></div>
 					<div class="p-3">
 						<a th:href="@{'product/detail/' + ${product.id}}">
-							<img th:src="@{'../views/image/' + ${product.image}}" class="w-100" alt="">
+							<img th:src="@{'/image/' + ${product.image}}" class="w-100" alt="">
 						</a>
 					</div>
-					<img src="../views/image/labelapple.png" class="ms-2 w-50 h-5" alt="">
+					<img src="/image/labelapple.png" class="ms-2 w-50 h-5" alt="">
 
 					<div class="ms-2  me-5">
 						<a th:href="@{'product/detail/' + ${product.id}}" class="text-decoration-none" th:text="${product.name}"></a>
@@ -158,7 +158,7 @@
 					</div>
 					<div class="p-3">
 						<a th:href="@{'product/detail/' + ${product.id}}">
-							<img th:src="@{'../views/image/' + ${product.image}}" class="w-100" alt="">
+							<img th:src="@{'/image/' + ${product.image}}" class="w-100" alt="">
 						</a>
 					</div>
 					<img src="../views/image/tetsieukm.png" class="ms-2 w-50 h-5" alt="">
