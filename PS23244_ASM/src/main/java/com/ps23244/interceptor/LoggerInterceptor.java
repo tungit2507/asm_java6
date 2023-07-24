@@ -43,13 +43,19 @@ public class LoggerInterceptor implements HandlerInterceptor{
 			request.setAttribute("isLogin", false);
 		}
 		request.setAttribute("cart", shoppingCartService);
-		System.out.println("LoggerInterceptor.postHandle() - " + request.getRequestURI());
+		/*
+		 * System.out.println("LoggerInterceptor.postHandle() - " +
+		 * request.getRequestURI());
+		 */
 	}
 
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		System.out.println("LoggerInterceptor.afterCompletion() - " + request.getRequestURI());
+		/*
+		 * System.out.println("LoggerInterceptor.afterCompletion() - " +
+		 * request.getRequestURI());
+		 */
 		
 	}
 		

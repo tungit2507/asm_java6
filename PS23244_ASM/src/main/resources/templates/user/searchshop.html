@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.thymeleaf.org" h:replace="~{/user/layout.html :: user(~{::body})}">
+<html xmlns="http://www.thymeleaf.org" th:replace="~{/user/layout.html :: user(~{::body})}">
 <head>
 <meta charset="UTF-8">
 <title>Shop Điện Thoại</title>
 </head>
 <body style="background-color: #f2f2f2;">
 	<div class="me-5 ms-5  mb-5" th:insert="~{/user/menu/price.html :: form}"></div>
-
-
-
 	<div class="me-5 ms-5 bg-white">
 		<section class="mt-3">
 

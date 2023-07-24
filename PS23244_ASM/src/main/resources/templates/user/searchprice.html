@@ -43,7 +43,7 @@
 					</li>
 					<!-- <c:forEach var="i" begin="1" end="${page.totalPages-1}"> -->
 					<li th:each="i : ${#numbers.sequence(1, page.totalPages-1)}" class="page-item">
-						<a class="page-link" href="/home/price?p=${i}">${i+1}</a>
+						<a class="page-link" th:href="@{|/home/price?p=${i}|}">${i+1}</a>
 					</li>
 
 

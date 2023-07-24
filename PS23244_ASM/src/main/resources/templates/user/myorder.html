@@ -41,7 +41,7 @@
 							</td>
 							<td>
 								<div th:if="${!item.confirmation}">
-									<a href="/home/delete/${item.id}" class="btn btn-danger" th:attr="onclick='return confirm(`Bạn có chắc muốn hủy  đơn hàng này?`)`'"> Hủy
+									<a th:href="@{|/home/delete/${item.id}|}" class="btn btn-danger" th:attr="onclick='return confirm(`Bạn có chắc muốn hủy  đơn hàng này?`)`'"> Hủy
 										đơn hàng </a>
 								</div>
 							</td>

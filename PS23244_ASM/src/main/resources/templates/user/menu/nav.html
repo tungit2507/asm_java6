@@ -19,21 +19,21 @@
 					<a class="nav-link active text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						<i class="bi bi-card-list"></i> Danh mục
 					</a>
-					<ul class="dropdown-menu">
+					<ul class="dropdown-menu" th:with="x='1000', y='1001', a='1002', b='1003', c='1004'">
 						<li>
-							<a class="dropdown-item" th:href="@{/home/brand(field1=1000)}">iPhone</a>
+							<a class="dropdown-item" th:href="@{/home/brand(field1=${x})}">iPhone</a>
 						</li>
 						<li>
-							<a class="dropdown-item" th:href="@{/home/brand(field1=1001)}">Oppo</a>
+							<a class="dropdown-item" th:href="@{/home/brand(field1=${y})}">Oppo</a>
 						</li>
 						<li>
-							<a class="dropdown-item" th:href="@{/home/brand(field1=1002)}">Xiaomi</a>
+							<a class="dropdown-item" th:href="@{/home/brand(field1=${a})}">Xiaomi</a>
 						</li>
 						<li>
-							<a class="dropdown-item" th:href="@{/home/brand(field1=1003)}">vivo</a>
+							<a class="dropdown-item" th:href="@{/home/brand(field1=${b})}">vivo</a>
 						</li>
 						<li>
-							<a class="dropdown-item" th:href="@{/home/brand(field1=1004)}">Samsung</a>
+							<a class="dropdown-item" th:href="@{/home/brand(field1=${c})}">Samsung</a>
 						</li>
 					</ul>
 				</li>

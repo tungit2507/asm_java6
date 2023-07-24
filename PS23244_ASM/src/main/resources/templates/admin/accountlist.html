@@ -27,41 +27,41 @@
 									<th class="text-center"></th>
 								</tr>
 							</thead>
-							<tr th:each="item : ${page.content}" style="height: 30px; line-height: 30px;">
-								<td th:text="${item.username}"></td>
-								<td th:text="${item.password}"></td>
-								<td th:text="${item.fullname}"></td>
-								<td th:text="${item.email}"></td>
-								<td>
-									<img alt="" th:src="@{|/image/${item.photo}|}" style="width: 50px">
-								</td>
-								<td th:text="${item.activated}"></td>
-								<td th:text="${item.admin}"></td>
-								<td class="text-center">
-									<a class='btn btn-info btn-xs' th:href="@{|/account/edit/${item.username|}">
-										<i class="bi bi-pencil-square"></i> Sửa
-									</a>
-									<a th:href="@{|/account/delete/${item.username|}" type="sunmit" class="btn btn-danger btn-xs">
-										<i class="bi bi-x-lg"></i> Xóa
-									</a>
-								</td>
-							</tr>
+							<tbody>
+								<tr th:each="item : ${page.content}" style="height: 30px; line-height: 30px;">
+									<td th:text="${item.username}"></td>
+									<td th:text="${item.password}"></td>
+									<td th:text="${item.fullname}"></td>
+									<td th:text="${item.email}"></td>
+									<td>
+										<img th:src="@{/image/} + ${item.photo}" style="width: 50px" />
+									</td>
+									<td th:text="${item.activated}"></td>
+									<td th:text="${item.admin}"></td>
+									<td class="text-center">
+										<a th:href="@{/account/edit/{username}(username=${item.username})}" class="btn btn-info btn-xs">
+											<i class="bi bi-pencil-square"></i> Sửa
+										</a>
+										<a th:href="@{/account/delete/{username}(username=${item.username})}" type="submit" class="btn btn-danger btn-xs">
+											<i class="bi bi-x-lg"></i> Xóa
+										</a>
+									</td>
+								</tr>
+							</tbody>
 						</table>
-						<div class=" text-center">
-							<a th:href="@{|/account/list?p=0|}" class="btn btn-success"> First </a>
-							<a th:href="@{|/account/list?p=${page.number-1}|}" class="btn btn-primary"> Previous </a>
-							<a th:href="@{|/account/list?p=${page.number+1}|}" class="btn btn-danger"> Next </a>
-							<a th:href="@{|/account/list?p=${page.totalPages-1}|}" class="btn btn-warning"> Last</a>
+						<div class="text-center">
+							<a th:href="@{/account/list(p=0)}" class="btn btn-success">First</a>
+							<a th:href="@{/account/list(p=${page.number-1})}" class="btn btn-primary">Previous</a>
+							<a th:href="@{/account/list(p=${page.number+1})}" class="btn btn-danger">Next</a>
+							<a th:href="@{/account/list(p=${page.totalPages-1})}" class="btn btn-warning">Last</a>
 						</div>
-						<!-- /.Left col -->
-						<!-- right col (We are only adding the ID to make the widgets sortable)-->
 					</div>
-					<!-- /.row (main row) -->
+					<!-- /.container-fluid -->
 				</div>
-				<!-- /.container-fluid -->
 			</section>
 			<!-- /.content -->
 		</div>
+
 		<!-- /.content-wrapper -->
 	</div>
 </body>

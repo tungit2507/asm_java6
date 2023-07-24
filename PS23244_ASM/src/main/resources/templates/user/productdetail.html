@@ -26,34 +26,34 @@
 					<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 						<div class="carousel-inner">
 							<div class="carousel-item active" data-bs-interval="2000">
-								<img src="@{/image/product/iPhone14_128GB/hinh1.jpeg}" class="d-block w-100 " alt="...">
+								<img th:src="@{/image/product/iPhone14_128GB/hinh1.jpeg}" class="d-block w-100 " alt="...">
 							</div>
 							<div class="carousel-item" data-bs-interval="2000">
-								<img src="@{/image/product/iPhone14_128GB/hinh2.jpeg}" class="d-block w-100" alt="...">
+								<img th:src="@{/image/product/iPhone14_128GB/hinh2.jpeg}" class="d-block w-100" alt="...">
 							</div>
 							<div class="carousel-item" data-bs-interval="2000">
-								<img src="@{/image/product/iPhone14_128GB/hinh3.jpeg}" class="d-block w-100" alt="...">
+								<img th:src="@{/image/product/iPhone14_128GB/hinh3.jpeg}" class="d-block w-100" alt="...">
 							</div>
 							<div class="carousel-item" data-bs-interval="2000">
-								<img src="@{/image/product/iPhone14_128GB/hinh4.jpeg}" class="d-block w-100" alt="...">
+								<img th:src="@{/image/product/iPhone14_128GB/hinh4.jpeg}" class="d-block w-100" alt="...">
 							</div>
 							<div class="carousel-item" data-bs-interval="2000">
-								<img src="@{/image/product/iPhone14_128GB/hinh5.jpeg}" class="d-block w-100" alt="...">
+								<img th:src="@{/image/product/iPhone14_128GB/hinh5.jpeg}" class="d-block w-100" alt="...">
 							</div>
 							<div class="carousel-item" data-bs-interval="2000">
-								<img src="@{/image/product/iPhone14_128GB/hinh6.jpeg}" class="d-block w-100" alt="...">
+								<img th:src="@{/image/product/iPhone14_128GB/hinh6.jpeg}" class="d-block w-100" alt="...">
 							</div>
 							<div class="carousel-item" data-bs-interval="2000">
-								<img src="@{/image/product/iPhone14_128GB/hinh7.jpeg}" class="d-block w-100" alt="...">
+								<img th:src="@{/image/product/iPhone14_128GB/hinh7.jpeg}" class="d-block w-100" alt="...">
 							</div>
 							<div class="carousel-item" data-bs-interval="2000">
-								<img src="@{/image/product/iPhone14_128GB/hinh8.jpeg}" class="d-block w-100" alt="...">
+								<img th:src="@{/image/product/iPhone14_128GB/hinh8.jpeg}" class="d-block w-100" alt="...">
 							</div>
 							<div class="carousel-item" data-bs-interval="2000">
-								<img src="@{/image/product/iPhone14_128GB/hinh9.jpeg}" class="d-block w-100" alt="...">
+								<img th:src="@{/image/product/iPhone14_128GB/hinh9.jpeg}" class="d-block w-100" alt="...">
 							</div>
 							<div class="carousel-item" data-bs-interval="2000">
-								<img src="@{/image/product/iPhone14_128GB/hinh10.jpeg}" class="d-block w-100" alt="...">
+								<img th:src="@{/image/product/iPhone14_128GB/hinh10.jpeg}" class="d-block w-100" alt="...">
 							</div>
 
 
@@ -120,7 +120,7 @@
 					</div>
 				</div>
 				<div class="d-grid gap-2   mt-2">
-					<a class="btn" href="@{|/home/cart/add/${pr.id}|}" type="submit" style="background-color: orange;">
+					<a class="btn" th:href="@{|/home/cart/add/${pr.id}|}" type="submit" style="background-color: orange;">
 						<span class="fw-bold fs-4 text-white">Thêm giỏ hàng</span>
 						<br>
 						<span class="text-white">Thỏa mái lựa chọn, xem hàng tại nhà</span>

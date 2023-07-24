@@ -7,58 +7,58 @@
 </head>
 <body>
 	<div class="wrapper">
-		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section>
 				<div class="content-header">
 					<div class="container-fluid">
+
 						<table class="table bg-white table-border table-striped custab text-center">
 							<a th:href="@{/product/controller}" class="btn bg-gra-03 p-2 mb-3 btn-xs pull-right">
 								<b>+</b> Thêm mới sản phẩm
 							</a>
 							<tr>
-								<th><a th:href="@{|/product/list?field=${id}&amp;sort=${field}&amp;p=${page.number}|}">Mã sản phẩm</a></th>
-								<th><a th:href="@{|/product/list?field=${image}&amp;sort=${field}&amp;p=${page.number}|}">Ảnh</a></th>
-								<th><a th:href="@{|/product/list?field=${name}&amp;sort=${field}&amp;p=${page.number}|}">Tên sản phẩm</a></th>
-								<th><a th:href="@{|/product/list?field=${price}&amp;sort=${field}&amp;p=${page.number}|}">Giá sản phẩm</a></th>
-								<th><a th:href="@{|/product/list?field=${sale}&amp;sort=${field}&amp;p=${page.number}|}">Giảm giá</a></th>
-								<th><a th:href="@{|/product/list?field=${createDate}&amp;sort=${field}&amp;p=${page.number}|}">Ngày tạo</a></th>
+								<th><a th:href="@{/product/list(field=id,sort=${field},p=${page.number})}">Mã sản phẩm</a></th>
+								<th><a th:href="@{/product/list(field=image,sort=${field},p=${page.number})}">Ảnh</a></th>
+								<th><a th:href="@{/product/list(field=name,sort=${field},p=${page.number})}">Tên sản phẩm</a></th>
+								<th><a th:href="@{/product/list(field=price,sort=${field},p=${page.number})}">Giá sản phẩm</a></th>
+								<th><a th:href="@{/product/list(field=sale,sort=${field},p=${page.number})}">Giảm giá</a></th>
+								<th><a th:href="@{/product/list(field=createDate,sort=${field},p=${page.number})}">Ngày tạo</a></th>
 								<th>Category ID</th>
 								<th class="text-center"></th>
 
 							</tr>
-							<tr style="height: 30px; line-height: 30px;" th:object="${item}" items="${page.content}">
-								<td th:text="${item.id}"></td>
-								<td>
-									<img alt="" th:src="@{|/image/${item.image}|}" style="width: 50px">
-								</td>
-								<td th:text="${item.name}"></td>
-								<td th:text="${item.sale}"></td>
-								<td th:text="${item.price}"></td>
-								<td th:text="${item.createDate}"></td>
-								<td th:text="${item.category.name}"></td>
-								<td class="text-center">
-									<a class='btn btn-info btn-xs' th:href="@{|/product/edit/${item.id}|}">
-										<i class="bi bi-pencil-square"></i> Sửa
-									</a>
-									<a th:href="@{|/product/delete/${item.id}|}" class="btn btn-danger btn-xs">
-										<i class="bi bi-x-lg"></i> Xóa
-									</a>
-								</td>
-							</tr>
+							<tbody>
+								<tr th:each="item : ${page.content}" style="height: 30px; line-height: 30px;">
+									<td th:text="${item.id}"></td>
+									<td>
+										<img th:src="@{/image/} + ${item.image}" style="width: 50px" />
+									</td>
+									<td th:text="${item.name}"></td>
+									<td th:text="${item.sale}"></td>
+									<td th:text="${item.price}"></td>
+									<td th:text="${item.createDate}"></td>
+									<td th:text="${item.category.name}"></td>
+									<td class="text-center">
+										<a th:href="@{/product/edit/{id}(id=${item.id})}" class="btn btn-info btn-xs">
+											<i class="bi bi-pencil-square"></i> Sửa
+										</a>
+										<a th:href="@{/product/delete/{id}(id=${item.id})}" class="btn btn-danger btn-xs">
+											<i class="bi bi-x-lg"></i> Xóa
+										</a>
+									</td>
+								</tr>
+							</tbody>
 						</table>
-						<div class=" text-center">
-							<a th:href="@{/product/list?p=0}" class="btn btn-success"> First </a>
-							<a th:href="@{|/product/list?p=${page.number}-1|}" class="btn btn-primary"> Previous </a>
-							<a th:href="@{|/product/list?p=${page.number}+1|}" class="btn btn-danger"> Next </a>
-							<a th:href="@{|/product/list?p=${page.totalPages}-1|}" class="btn btn-warning"> Last</a>
+						<div class="text-center">
+							<a th:href="@{/product/list(p=0)}" class="btn btn-success">First</a>
+							<a th:href="@{/product/list(p=${page.number-1})}" class="btn btn-primary">Previous</a>
+							<a th:href="@{/product/list(p=${page.number+1})}" class="btn btn-danger">Next</a>
+							<a th:href="@{/product/list(p=${page.totalPages-1})}" class="btn btn-warning">Last</a>
 						</div>
-
 
 						<!-- /.Left col -->
 						<!-- right col (We are only adding the ID to make the widgets sortable)-->
-
 					</div>
 					<!-- /.row (main row) -->
 				</div>
@@ -66,7 +66,7 @@
 			</section>
 			<!-- /.content -->
 		</div>
-		<!-- /.content-wrapper -->
+
 	</div>
 </body>
 </html>
