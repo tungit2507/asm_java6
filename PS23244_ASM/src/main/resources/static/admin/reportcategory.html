@@ -1,0 +1,37 @@
+<div class="wrapper" ng-if="items">
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+		<!-- Content Header (Page header) -->
+		<section>
+			<div class="content-header">
+				<div class="container-fluid">
+					<table class="table bg-white table-border table-striped custab text-center">
+
+						<thead>
+							<tr>
+								<th style="font-weight: bolder; font-size: 18px"></th>
+								<th style="font-weight: bolder; font-size: 18px">Tên loại</th>
+								<th style="font-weight: bolder; font-size: 18px">Tổng tiền</th>
+								<th style="font-weight: bolder; font-size: 18px">Số lượng</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in pager.items" ng-init="i = $index">
+								<td>{{ i + 1 }}</td>
+								<td>{{ item.group.name }}</td>
+								<td>{{ item.sum + 'đ' }}</td>
+								<td>{{ item.count }}</td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- /.Left col -->
+					<!-- right col (We are only adding the ID to make the widgets sortable)-->
+				</div>
+				<!-- /.row (main row) -->
+			</div>
+			<!-- /.container-fluid -->
+		</section>
+		<!-- /.content -->
+	</div>
+	<!-- /.content-wrapper -->
+</div>

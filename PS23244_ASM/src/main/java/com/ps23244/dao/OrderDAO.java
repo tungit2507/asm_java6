@@ -18,8 +18,11 @@ public interface OrderDAO extends JpaRepository<Order, Long>{
 	@Query("SELECT o FROM Order o WHERE o.account.username = ?1")
 	List<Order> findOrderByAccount(String username);
 	
+	@Query("SELECT o FROM Order o WHERE o.id = ?1")
+	List<Order> findID(Long id);
+	
 	@Query("Select o from Order o where o.createDate between ?1 and ?2")
-	Page<Order> findOrderByDate(Date firstDate, Date lastDate, Pageable pageable);
+	List<Order> findOrderByDate(Date firstDate, Date lastDate);
 	
 	
 }

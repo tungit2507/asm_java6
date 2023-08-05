@@ -14,29 +14,34 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
+
 @Data
 @Entity
 @Table(name = "accounts")
-public class Account implements Serializable{
-	
+public class Account implements Serializable {
+
 	@Id
-	@NotBlank(message="Vui lòng nhập tài khoản !")
+	@NotBlank(message = "Vui lòng nhập tài khoản !")
 	String username;
-	@NotBlank(message="Vui lòng nhập mật khẩu !")
+	@NotBlank(message = "Vui lòng nhập mật khẩu !")
 	String password;
-	@NotBlank(message="Vui lòng nhập họ tên !")
+	@NotBlank(message = "Vui lòng nhập họ tên !")
 	String fullname;
-	@NotBlank(message="Vui lòng nhập địa chỉ email !")
-	@Email(message="Vui lòng nhập đúng định dạng email !")
+	@NotBlank(message = "Vui lòng nhập địa chỉ email !")
+	@Email(message = "Vui lòng nhập đúng định dạng email !")
 	String email;
-	@NotNull(message="Vui lòng chọn ảnh")
+	@NotNull(message = "Vui lòng chọn ảnh")
 	String photo;
-	
+
 	@Column(nullable = false, columnDefinition = "bit default 0")
 	boolean activated;
-	
+
 	boolean admin;
+	@JsonIgnore
 	@OneToMany(mappedBy = "account")
 	List<Order> orders;
+
 }

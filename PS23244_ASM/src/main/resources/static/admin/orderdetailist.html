@@ -1,0 +1,85 @@
+<div class="wrapper" ng-if="items">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section>
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-10 offset-md-1">
+                            <div class="col row">
+                                <div class="col-3 alert alert-info">
+                                    <h3 class="text-center">Đơn Hàng</h3>
+                                    <h5>
+                                        Mã loại:
+                                        <h5>{{ ord.id }}</h5>
+                                    </h5>
+                                    <h5>
+                                        Ngày tạo:
+                                        <h5>{{ ord.createDate }}</h5>
+                                    </h5>
+                                </div>
+                                <div class="col-4 offset-5 alert alert-primary">
+                                    <h3 class="text-center">Khách Hàng</h3>
+                                    <h5>
+                                        Tài khoản:
+                                        <h5>{{ ord.account.username }}</h5>
+                                    </h5>
+                                    <h5>
+                                        Họ tên:
+                                        <h5>{{ ord.account.fullname }}</h5>
+                                    </h5>
+                                    <h5>
+                                        Số điện thoại:
+                                        <h5>{{ ord.sdt }}</h5>
+                                    </h5>
+                                    <h5>
+                                        Địa chỉ:
+                                        <h5>{{ ord.address }}</h5>
+                                    </h5>
+                                    <h5>
+                                        Email:
+                                        <h5>{{ ord.account.email }}</h5>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table bg-white table-border table-striped custab text-center">
+                            <thead>
+                                <tr>
+                                    <th style="font-weight: bolder; font-size: 18px">Mã đơn hàng chi tiết ID</th>
+                                    <th style="font-weight: bolder; font-size: 18px">Ảnh</th>
+                                    <th style="font-weight: bolder; font-size: 18px">Mã sản phẩm</th>
+                                    <th style="font-weight: bolder; font-size: 18px">Tên sản phẩm</th>
+                                    <th style="font-weight: bolder; font-size: 18px">Giá</th>
+                                    <th style="font-weight: bolder; font-size: 18px">Số Lượng</th>
+                                    <th style="font-weight: bolder; font-size: 18px">Mã đơn hàng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in pager.items" style="height: 20px; line-height: 40px;">
+                                    <td>{{ item.id }}</td>
+                                    <td>
+                                        <img ng-src="/image/{{ item.product.image }}" alt="" style="width: 50px" />
+                                    </td>
+                                    <td>{{ item.product.id }}</td>
+                                    <td>{{ item.product.name }}</td>
+                                    <td>{{ item.product.price }}</td>
+                                    <td>{{ item.quantity }}</td>
+                                    <td>{{ item.order.id }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.Left col -->
+                    <!-- right col (We are only adding the ID to make the widgets sortable)-->
+                </div>
+                <!-- /.row (main row) -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- Control Sidebar -->
+</div>

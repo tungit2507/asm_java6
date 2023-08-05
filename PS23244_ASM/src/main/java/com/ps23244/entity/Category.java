@@ -10,6 +10,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
@@ -21,6 +23,7 @@ public class Category implements Serializable{
 	String id;
 	@NotBlank(message="Vui lòng nhập tên loại !")
 	String name;
+	@JsonIgnore
 	@OneToMany(mappedBy = "category")
 	List<Product> products;
 	

@@ -1,0 +1,44 @@
+<div class="wrapper" ng-if="items">
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+		<!-- Content Header (Page header) -->
+		<section>
+			<div class="content-header">
+				<div class="container-fluid">
+					<table class="table bg-white table-border table-striped custab text-center">
+						<thead>
+							<a href="#!categoryctrl" class="btn bg-gra-03  mb-3 btn-xs pull-right p-2">
+								<b>+</b> Thêm mới loại
+							</a>
+							<tr>
+								<th>Mã loại</th>
+								<th>Tên Loại</th>
+								<th class="text-center"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in pager.items" style="height: 30px; line-height: 30px;">
+								<td>{{ item.id }}</td>
+								<td>{{ item.name }}</td>
+								<td class="text-center">
+									<a ng-click="edit(item)">
+										<i class="bi bi-pencil-square"></i> Sửa
+									</a>
+									<a ng-click="delete(item)">
+										<i class="bi bi-x-lg"></i> Xóa
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="text-center">
+						<!-- Your pagination links here (AngularJS will handle the logic) -->
+					</div>
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+		</section>
+		<!-- /.content -->
+	</div>
+	<!-- /.content-wrapper -->
+</div>

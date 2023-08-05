@@ -1,0 +1,101 @@
+<div class="wrapper">
+	<div class="content-wrapper">
+		<section>
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="page-wrapper bg-gra-03 " style="height: 650px">
+						<div class="container" id="main-content" style="padding-top: 50px">
+							<div class="row">
+								<!-- LEFT AREA -->
+								<div class="col-md-4"></div>
+
+								<!-- RIGHT AREA -->
+								<div class="col-md-4">
+									<a href="#!productctrl/list" class="btn bg-gra-03 p-2 mb-3 btn-xs pull-right"> Danh sách sản phẩm </a>
+
+									<!-- Form trong file JSP -->
+									<form ng-submit="submitForm()">
+										<div class="form-group">
+											<input class="form-control" ng-model="item.name" placeholder="Tên sản phẩm" />
+											<ul class="text-danger">
+												<li ng-repeat="error in errors.name">{{ error }}</li>
+											</ul>
+										</div>
+
+										<div class="form-group">
+											<input type="file" ng-model="item.image" aria-describedby="imageHid" placeholder="image" />
+											<ul class="text-danger">
+												<li ng-repeat="error in errors.image">{{ error }}</li>
+											</ul>
+										</div>
+
+										<div class="form-group">
+											<input class="form-control" ng-model="item.sale" placeholder="Giá sản phẩm" />
+											<ul class="text-danger">
+												<li ng-repeat="error in errors.sale">{{ error }}</li>
+											</ul>
+										</div>
+										<div class="form-group">
+											<input class="form-control" ng-model="item.price" placeholder="Giảm giá" />
+											<ul class="text-danger">
+												<li ng-repeat="error in errors.price">{{ error }}</li>
+											</ul>
+										</div>
+
+										<div class="form-group">
+											<input type="Date" class="form-control" id="createDate" disabled="false" ng-model="item.createDate" placeholder="Ngày tạo" />
+											<ul class="text-danger">
+												<li ng-repeat="error in errors.createDate">{{ error }}</li>
+											</ul>
+										</div>
+
+										<div class="form-group">
+											Available: <br />
+											<input ng-model="item.available" value="true" type="radio">
+											true
+											<input ng-model="item.available" value="false" type="radio">
+											false
+											<ul class="text-danger">
+												<li ng-repeat="error in errors.available">{{ error }}</li>
+											</ul>
+										</div>
+
+										<div class="form-group ">
+											<select ng-model="item.categories">
+												<option value="">Categories?</option>
+												<option ng-repeat="entry in categories" value="{{ entry.id }}">{{ entry.name }}</option>
+											</select>
+										</div>
+
+										<div class="form-group text-center">
+											<button type="submit" class="btn btn-success">
+												<i class="fa fa-plus-square"></i> Create
+											</button>
+											<button type="button" class="btn btn-primary" ng-click="updateItem()">
+												<i class="fa fa-save"></i> Update
+											</button>
+											<a class="btn btn-danger" ng-href="/product/delete/{{ item.id }}">
+												<i class="bi bi-trash3"></i> Delete
+											</a>
+											<button type="button" class="btn btn-warning" ng-click="resetForm()" style="color: white">
+												<i class="bi bi-x-square"></i> New
+											</button>
+										</div>
+									</form>
+								</div>
+								<div class="col-md-4"></div>
+								<!-- end RIGHT AREA -->
+							</div>
+							<!-- END row -->
+						</div>
+						<!-- END container -->
+					</div>
+				</div>
+				<!-- /.row (main row) -->
+			</div>
+			<!-- /.container-fluid -->
+		</section>
+		<!-- /.content -->
+	</div>
+	<!-- /.content-wrapper -->
+</div>

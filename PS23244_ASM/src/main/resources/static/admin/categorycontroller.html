@@ -1,0 +1,61 @@
+<div class="wrapper">
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section>
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="page-wrapper bg-gra-03 " style="height: 600px">
+                        <div class="container" id="main-content" style="padding-top: 100px">
+                            <div class="row">
+                                <!-- end LEFT AREA -->
+                                <div class="col-md-4"></div>
+                                <!-- RIGHT AREA -->
+                                <div class="col-md-4">
+                                    <a href="/category/list" class="btn bg-gra-03 p-2 mb-3 btn-xs pull-right"> Danh sách loại </a>
+                                    <form ng-submit="submitForm()" ng-init="item = {}">
+
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" ng-model="item.id" placeholder="Mã loại" />
+                                            <ul ng-show="formErrors.id" class="text-danger">
+                                                <li ng-repeat="error in formErrors.id">{{ error }}</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" ng-model="item.name" placeholder="Tên loại" />
+                                            <ul ng-show="formErrors.name" class="text-danger">
+                                                <li ng-repeat="error in formErrors.name">{{ error }}</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="form-group text-center">
+                                            <button type="submit" class="btn btn-success">
+                                                <i class="fa fa-plus-square"></i> Create
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa fa-save"></i> Update
+                                            </button>
+                                            <a ng-href="/category/delete/{{ item.id }}" class="btn btn-danger">
+                                                <i class="bi bi-trash3"></i> Delete
+                                            </a>
+                                            <button type="button" class="btn btn-warning" ng-click="resetForm()" style="color: white">
+                                                <i class="bi bi-x-square"></i> New
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="col-md-4"></div>
+                                <!-- end RIGHT AREA -->
+                            </div>
+                            <!-- END row -->
+                        </div>
+                        <!-- END container -->
+                    </div>
+
+                </div> <!-- /.row (main row) -->
+            </div><!-- /.container-fluid -->
+        </section>
+    </div>
+    <!-- /.content-wrapper -->
+</div>
