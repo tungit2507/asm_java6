@@ -53,6 +53,7 @@ public class CategoryRestController {
 
 	@PostMapping
 	public Category post(@RequestBody Category category) {
+		category.setIsActive(true);
 		categoryService.create(category);
 		return category;
 	}
@@ -64,7 +65,9 @@ public class CategoryRestController {
 
 	@DeleteMapping("{id}")
 	public void delete(@PathVariable("id") String id) {
-		categoryService.delete(id);
+		Category category =  categoryService.findById(id);
+		category.setIsActive(false);
+		categoryService.save(category);
 	}
 
 //	@RequestMapping("/list")

@@ -41,5 +41,10 @@ public class CategoryServiceImpl implements CategoryService {
 		dao.deleteById(id);
 	}
 
+	@Override
+	public Category save(Category category) {
+		return dao.save(category);
+	}
+
 
 }
