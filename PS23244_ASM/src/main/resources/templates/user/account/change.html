@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -49,5 +50,51 @@
     </div>
 
     <script th:src="@{/views/js/bootstrap.bundle.min.js}"></script>
+=======
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout.html :: user(~{::body})}">
+<head>
+<meta charset="utf-8">
+<title>Thay đổi mật khẩu</title>
+</head>
+<body style="background-color: #f2f2f2;">
+	<div  class="d-flex justify-content-center mt-5">
+		<div class="card" style="width: 400px;">
+			<form action="change-password" class="px-4 py-3" method="post">
+				<div class=" fs-5 mb-4 text-center">
+					<span class="fw-bold"> Thay đổi mật khẩu</span>
+				</div>
+				<h5 class="text-danger">[[${message }]]</h5>
+				<div class="mb-3">
+					<input type="text" id="username" name="username" class="form-control" placeholder="Nhập username">
+				</div>
+				<div class="mb-3">
+
+					<input type="password" id="password" name="password" class="form-control" placeholder="Nhập mật khẩu cũ">
+				</div>
+				<div class="mb-3">
+
+					<input type="password" id="newpassword" name="newpassword" class="form-control" placeholder="Nhập mật khẩu mới">
+				</div>
+				<div class="mb-3">
+
+					<input type="password" id="confirmpassword" name="confirmpassword" class="form-control" placeholder="Xác nhận mật khẩu mới">
+				</div>
+				<div class="row mb-3 ">
+					<div class="col-md-7"></div>
+					<div class="col-md-5"></div>
+				</div>
+				<div class="mb-3">
+
+					<button type="submit" class="btn " style="width: 350px; background-color: #be1e2d;">
+						<span class="fs-5 fw-bold text-light">THAY ĐỔI MẬT KHẨU</span>
+					</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+>>>>>>> e22cecb4bca0f60a58853bcc52fdf9203f805d5b
 </body>
 </html>

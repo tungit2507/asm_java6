@@ -33,8 +33,9 @@
 
 						<span class="text-decoration-underline"> đ</span>
 					</div>
-					<div class="ms-2 me-5 bg-light fs-6">Tặng thêm đến 1 triệu khi Thu đổi mới. giảm thêm 800.000đ khi mở thẻ TPBank</div>
-					<a TH:href="@{|/home/cart/add/${product.id}|}" class="btn btn-outline-danger mt-1 mb-2"> Thêm giỏ hàng</a>
+					<div class="ms-2 me-5 bg-light fs-6">Tặng thêm đến 1 triệu khi Thu đổi mới. giảm thêm 800.000đ khi mở thẻ
+						TPBank</div>
+					<a th:attr="ng-click=@{|cart.add(${product.id})|}" class="btn btn-outline-danger mt-1 mb-2"> Thêm giỏ hàng</a>
 				</div>
 				<!-- 				</c:forEach> -->
 			</div>
@@ -45,9 +46,11 @@
 						<a class="page-link" th:href="@{|/home/shop?p=0|}">1</a>
 					</li>
 					<!-- <c:forEach var="i" begin="1" end="${page.totalPages-1}"> -->
-					<li class="page-item" th:each="i : ${#numbers.sequence(1, page.totalPages-1)}">
-						<a class="page-link" th:href="@{|/home/shop?p=${i}|}">${i+1}</a>
-					</li>
+					<th:block th:each="i : ${#numbers.sequence(1, page.totalPages-1)}">
+						<li class="page-item">
+							<a class="page-link" th:href="@{'/home/brand?p=' + ${i}}" th:text="${i+1}"></a>
+						</li>
+					</th:block>
 					<!-- </c:forEach> -->
 				</ul>
 			</div>

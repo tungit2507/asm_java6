@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="shortcut icon" type="image/png" href="/dist/img/iconadmin.png" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- ./wrapper -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/js/tempusdominus-bootstrap-4.min.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/css/tempusdominus-bootstrap-4.min.css"
+	crossorigin="anonymous"
+/> -->
+
+<!-- iCheck -->
+<link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+<!-- JQVMap -->
+<link rel="stylesheet" href="/plugins/jqvmap/jqvmap.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="/dist/css/adminlte.min.css">
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<!-- Font Awesome -->
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<!--  style -->
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/icon/bootstrap-icons.css">
+
+<!-- Theme style -->
+<link rel="stylesheet" href="/css/productlist.css">
+
+<style type="text/css">
+*[id$=errors] {
+	color: red;
+	font-style: italic;
+}
+a{
+	text-decoration: none !important;
+}
+</style>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed" ng-app="app">
+	<!-- Navbar -->
+	<div ng-include="'/admin/menu/nav.html'"></div>
+	<!-- Aside -->
+	<div ng-include="'/admin/menu/aside.html'"></div>
+
+	<!-- Main -->
+	<main>
+		<p class="ng-view" style="margin-bottom: 0px;" />
+	</main>
+
+	<!--  Footer -->
+	<div ng-include="'/admin/menu/footer.html'"></div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+	<script src="/plugins/jquery/jquery.min.js"></script>
+	<!-- jQuery UI 1.11.4 -->
+	<script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+	<script>
+		$.widget.bridge('uibutton', $.ui.button)
+	</script>
+	<!-- Bootstrap 4 -->
+	<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Sparkline -->
+	<!-- 		<script src="/plugins/sparkline/sparkline.js"></script> -->
+	<!-- JQVMap -->
+	<!-- 	<script src="/plugins/jqvmap/jquery.vmap.min.js"></script>
+	<script src="/plugins/jqvmap/maps/jquery.vmap.usa.js"></script> -->
+	<!-- jQuery Knob Chart -->
+	<script src="/plugins/jquery-knob/jquery.knob.min.js"></script>
+	<!-- daterangepicker -->
+	<!-- 	<script src="/plugins/moment/moment.min.js"></script>
+	<script src="/plugins/daterangepicker/daterangepicker.js"></script> -->
+	<!-- Tempusdominus Bootstrap 4 -->
+	<!-- Summernote -->
+	<!-- 	<script src="/plugins/summernote/summernote-bs4.min.js"></script> -->
+	<!-- overlayScrollbars -->
+	<!-- 	<script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script> -->
+	<!-- AdminLTE App -->
+	<script src="/dist/js/adminlte.js"></script>
+	<!-- AdminLTE for demo purposes -->
+	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+	<!-- 	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"> -->
+
+	</script>
+
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+	<script	src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.2.1/browser/overlayscrollbars.browser.es6.min.js"
+		integrity="sha512-f3C0D/1oFo3acuPqEOeWI2k7NNdNbsIVZp5dvparW7pPUZrQvFqz+WfiFAVAFgqb3nzaL5QkcEu9sHzw3d7HlQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<!-- 	<script src="/dist/js/pages/dashboard.js"> -->
+
+	</script>
+
+	<script type="text/javascript" src="/admin/js/admin-app.js"></script>
+	<script type="text/javascript" src="/admin/js/account-ctrl.js"></script>
+	<script type="text/javascript" src="/admin/js/category-ctrl.js"></script>
+	<script type="text/javascript" src="/admin/js/product-ctrl.js"></script>
+	<script type="text/javascript" src="/admin/js/order-ctrl.js"></script>
+	<script type="text/javascript" src="/admin/js/report-category_ctrl.js"></script>
+	<script type="text/javascript" src="/admin/js/report-date_ctrl.js"></script>
+</body>
+</html>

@@ -22,13 +22,10 @@ import com.ps23244.untils.CookieService;
 import com.ps23244.untils.ParamService;
 import com.ps23244.untils.SessionService;
 
-
-
-
 @Controller
 @RequestMapping("home")
 public class HomeController {
-	
+
 	@Autowired
 	CookieService cookieService;
 	@Autowired
@@ -36,26 +33,23 @@ public class HomeController {
 	@Autowired
 	SessionService sessionService;
 	@Autowired
-	AccountDAO accDAO;	
-	
+	AccountDAO accDAO;
+
 	@Autowired
 	ProductDAO proDAO;
-	
-	
+
 	@Autowired
 	OrderDetailDAO orderDetailDAO;
-	
-	
+
 	// show index
 	@RequestMapping("index")
 	public String shop(Model model) {
 		List<Product> top4Products = proDAO.findTop4Products();
 		List<Product> top5Products = proDAO.findTop5Products();
 		model.addAttribute("products", top4Products);
-		model.addAttribute("productstop5",top5Products);
-        return "user/index";
-		
-		
+		model.addAttribute("productstop5", top5Products);
+		return "user/index";
+
 	}
 
 }

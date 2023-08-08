@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -76,3 +77,58 @@
 <script th:src="@{/views/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
+=======
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout.html :: user(~{::body})}">
+<head>
+<meta charset="utf-8">
+<title>Đăng ký</title>
+</head>
+<body style="background-color: #f2f2f2;">
+
+	<div class="d-flex justify-content-center">
+		<div>
+			<form method="get" th:action="@{/home/register}" th:object="${item}">
+				<div class=" mb-4 text-center">
+					<div class="">
+						<img th:src="@{/image/register.png}" alt="" style="width: 200px; height: 200px;">
+					</div>
+					<div class="fw-bold fs-5">Đăng ký tài khoản</div>
+				</div>
+				<div class="mb-3">
+					<input class="form-control border border-light" type="text" id="username" th:field="*{username}" placeholder="Vui lòng nhập tên tài khoản" />
+				</div>
+				<h2 th:text="${message}"></h2>
+				<div class="mb-3">
+					<input class="form-control border border-light" type="password" id="password" th:field="*{password}" placeholder="Vui lòng nhập mật khẩu" />
+				</div>
+				<div class="mb-3">
+					<input class="form-control border border-light" type="text" id="fullname" th:field="*{fullname}" placeholder="Vui lòng nhập họ và tên" />
+				</div>
+				<div class="mb-3">
+					<input class="form-control border border-light" type="email" id="email" th:field="*{email}" placeholder="Vui lòng nhập email" />
+				</div>
+				<div class="mb-3">
+					<input class="file-upload-input" type="file" id="photo" th:field="*{photo}" onchange="readURL(this);" accept="image/*" />
+				</div>
+				<div class="mb-3">
+					<button type="submit" class="btn rounded-pill" formaction="/home/register/create" style="width: 600px; background-color: #be1e2d;">
+						<span class="fs-5 fw-bold text-light">Đăng ký</span>
+					</button>
+				</div>
+				<div class="mb-3">
+					<div class="text-center">-hoặc-</div>
+				</div>
+				<div class="mb-2">
+					<div class="text-center">
+						Bạn đã có tài khoản?
+						<a class="text-decoration-none" th:href="@{/home/login}">Đăng nhập ngay</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
+>>>>>>> e22cecb4bca0f60a58853bcc52fdf9203f805d5b

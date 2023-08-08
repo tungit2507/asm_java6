@@ -16,7 +16,12 @@ public class LogoutController {
 	
 	@RequestMapping("/logout")
 	public String logout() {
-		sessionService.remove("user");
+		sessionService.remove("authentication");
+		return "redirect:/home/index";
+	}
+	@RequestMapping("/logout/success")
+	public String logoutsc() {
+		sessionService.remove("authentication");
 		return "redirect:/home/index";
 	}
 }

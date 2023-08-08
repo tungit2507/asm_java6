@@ -5,10 +5,10 @@
 <title>Insert title here</title>
 <link rel="shortcut icon" type="image/png" href="/image/icon.png" />
 
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-<link rel="stylesheet" href="/icon/bootstrap-icons.css">
-<link rel="stylesheet" href="/css/orderdetail.css">
+<link rel="stylesheet" th:href="@{https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css}">
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/icon/bootstrap-icons.css}">
+<link rel="stylesheet" th:href="@{/css/orderdetail.css}">
 
 <style type="text/css">
 .page-wrapper {
@@ -52,7 +52,7 @@
 }
 </style>
 </head>
-<body>
+<body ng-app="app" ng-controller="cart-ctrl">
 	<header th:insert="~{/user/menu/header.html :: header}"> </header>
 
 	<nav class="navbar navbar-expand-lg text-center bg-dark" th:insert="~{/user/menu/nav.html :: nav}"></nav>
@@ -62,7 +62,7 @@
 	<footer th:insert="~{/user/menu/footer.html :: footer}"> </footer>
 
 
-
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	<script src="/js/bootstrap.bundle.min.js"></script>
 	<script src="/js/jquery-3.3.1.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
@@ -76,6 +76,8 @@
 	<script src="/js/main.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	
+	<script src="/js/user/ctrl.js"></script>
+	<script src="/js/user/app.js"></script>
+
 </body>
 </html>

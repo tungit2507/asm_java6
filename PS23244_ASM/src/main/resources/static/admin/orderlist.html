@@ -1,0 +1,89 @@
+<div class="wrapper" ng-if="items">
+	<div class="content-wrapper">
+		<section>
+			<div class="content-header">
+				<div class="container-fluid">
+					<table class="table bg-white table-border table-striped custab text-center">
+						<thead>
+							<tr>
+								<th style="font-weight: bolder; font-size: 18px">
+									<button class="btn btn-info btn-xs confirm-btn" ng-click="sortOrders('id')">
+										Mã Đặt Hàng
+									</button>
+								</th>
+								<th style="font-weight: bolder; font-size: 18px">
+									<button class="btn btn-info btn-xs confirm-btn" ng-click="sortOrders('custormerName')">
+										Tên khách hàng
+									</button>
+								</th>
+
+								<th style="font-weight: bolder; font-size: 18px">
+									<button class="btn btn-info btn-xs confirm-btn" ng-click="sortOrders('createDate')">
+										Ngày đặt hàng
+									</button>
+								</th>
+								<th style="font-weight: bolder; font-size: 18px">
+
+									<button class="btn btn-info btn-xs confirm-btn" ng-click="sortOrders('phoneNumber')">
+										Số điện thoại
+									</button>
+								</th>
+
+								<th style="font-weight: bolder; font-size: 18px">
+									<button class="btn btn-info btn-xs confirm-btn" ng-click="sortOrders('address')">
+										Địa chỉ
+									</button>
+								</th>
+								<th style="font-weight: bolder; font-size: 18px">
+									<button class="btn btn-info btn-xs confirm-btn" ng-click="sortOrders('confirmation')">
+										Xác nhận đơn hàng
+									</button>
+								</th>
+
+								<th style="font-weight: bolder; font-size: 18px"><button class="btn btn-info btn-xs confirm-btn" disabled>
+									 đơn hàng
+								</button></th>
+
+							</tr>
+
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in pager.items" style="height: 30px; line-height: 30px;">
+								<td>{{item.id}}</td>
+								<td>{{item.account.username}}</td>
+								<td>{{item.createDate}}</td>
+								<td>{{item.sdt}}</td>
+								<td>{{item.address}}</td>
+								<td>{{item.confirmation ? 'Đã xác nhận' : 'Chưa xác nhận'}}</td>
+								<td>
+									<a ng-href="/admin/orderdetail/{{item.id}}">Chi tiết đơn hàng</a>
+								</td>
+								<td>
+									<div ng-if="!item.confirmation">
+										<button class="btn btn-info btn-xs confirm-btn" ng-click="confirm(item.id)">
+											<i class="bi bi-pencil-square"></i> Xác nhận
+										</button>
+									</div>
+
+
+								</td>
+								<td><a  style="font-size: 14px" class="btn btn-danger btn-xs" ng-click="delete(item.id)">
+									<i class="bi bi-x-lg"></i> Xóa
+								</a></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class=" text-center">
+						<a ng-click="pager.first()" class="btn btn-success">First</a>
+						<a ng-click="pager.prev()" class="btn btn-primary">Previous</a>
+						<a ng-click="pager.next()" class="btn btn-danger"> Next </a>
+						<a ng-click="pager.last()" class="btn btn-warning">Last</a>
+					</div>
+				</div>
+
+			</div>
+		</section>
+	</div>
+</div>
+
+

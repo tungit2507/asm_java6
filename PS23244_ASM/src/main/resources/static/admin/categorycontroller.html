@@ -1,0 +1,47 @@
+<div class="wrapper" >
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+<div class="panel panel-default">
+
+	<div class="panel-body">
+		
+			<div class="col-md-8">
+				<a ng-click="listClick()" class="btn bg-gra-03 p-2 mb-3 btn-xs pull-right"> Danh sách loại </a>
+				<form>
+					<div class="form-group">
+						<input class="form-control" type="text" ng-model="form.id"
+							placeholder="Mã loại" />
+						<ul ng-show="formErrors.id" class="text-danger">
+							<li ng-repeat="error in formErrors.id">{{ error }}</li>
+						</ul>
+					</div>
+
+					<div class="form-group">
+						<input class="form-control" type="text" ng-model="form.name"
+							placeholder="Tên loại" />
+						<ul ng-show="formErrors.name" class="text-danger">
+							<li ng-repeat="error in formErrors.name">{{ error }}</li>
+						</ul>
+					</div>
+
+					<div class="form-group text-center">
+						<button type="button" ng-click="create()" class="btn btn-success">
+							<i class="fa fa-plus-square"></i> Create
+						</button>
+						<button type="button" ng-click="update()" class="btn btn-primary">
+							<i class="fa fa-save"></i> Update
+						</button>
+						<a ng-click="delete(form)" class="btn btn-danger"> <i
+							class="bi bi-trash3"></i> Delete
+						</a>
+						<button type="button" class="btn btn-warning" ng-click="reset()"
+							style="color: white">
+							<i class="bi bi-x-square"></i> New
+						</button>
+					</div>
+				</form>
+			</div>
+	</div>
+</div>
+</div>
+</div>

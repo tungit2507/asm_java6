@@ -3,12 +3,16 @@ package com.ps23244.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import lombok.Data;
 
@@ -21,6 +25,9 @@ public class Category implements Serializable{
 	String id;
 	@NotBlank(message="Vui lòng nhập tên loại !")
 	String name;
+	@Column(name = "isactive") 
+	Boolean isActive;
+	@JsonIgnore
 	@OneToMany(mappedBy = "category")
 	List<Product> products;
 	

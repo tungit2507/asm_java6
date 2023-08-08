@@ -1,0 +1,60 @@
+<div class="wrapper" ng-if="items">
+	<div class="content-wrapper">
+		<!-- Content Header (Page header) -->
+		<section>
+			<div class="content-header">
+				<div class="container-fluid">
+
+					<table class="table bg-white table-border table-striped custab text-center">
+						<a href="#!productctrl" class="btn bg-gra-03 p-2 mb-3 btn-xs pull-right">
+							<b>+</b> Thêm mới sản phẩm
+						</a>
+						<tr>
+							<th><a href="#!productctrl?field=id">Mã sản phẩm</a></th>
+							<th><a href="#!productctrl?field=image">Ảnh</a></th>
+							<th><a href="#!productctrl?field=name">Tên sản phẩm</a></th>
+							<th><a href="#!productctrl?field=price">Giá sản phẩm</a></th>
+							<th><a href="#!productctrl?field=sale">Giảm giá</a></th>
+							<th><a href="#!productctrl?field=createDate">Ngày tạo</a></th>
+							<th>Category ID</th>
+							<th class="text-center"></th>
+						</tr>
+						<tbody>
+							<tr ng-repeat="item in pager.items" style="height: 30px; line-height: 30px;">
+								<td>{{ item.id }}</td>
+								<td>
+									<img ng-src="/image/{{ item.image }}" style="width: 50px" />
+								</td>
+								<td>{{ item.name }}</td>
+								<td>{{ item.sale }}</td>
+								<td>{{ item.price }}</td>
+								<td>{{ item.createDate }}</td>
+								<td>{{ item.category.id }}</td>
+								<td class="text-center">
+									<a ng-click="edit(item)" class="btn btn-info btn-xs">
+										<i class="bi bi-pencil-square"></i> Sửa
+									</a>
+									<a ng-click="delete(item)" class="btn btn-danger btn-xs">
+										<i class="bi bi-x-lg"></i> Xóa
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="text-center">
+						<a href="#!productctrl/list?p=0" class="btn btn-success">First</a>
+						<a href="#!productctrl/list?p={{ page.number - 1 }}" class="btn btn-primary">Previous</a>
+						<a href="#!productctrl/list?p={{ page.number + 1 }}" class="btn btn-danger">Next</a>
+						<a href="#!productctrl/list?p={{ page.totalPages - 1 }}" class="btn btn-warning">Last</a>
+					</div>
+
+					<!-- /.Left col -->
+					<!-- right col (We are only adding the ID to make the widgets sortable)-->
+				</div>
+				<!-- /.row (main row) -->
+			</div>
+			<!-- /.container-fluid -->
+		</section>
+		<!-- /.content -->
+	</div>
+</div>

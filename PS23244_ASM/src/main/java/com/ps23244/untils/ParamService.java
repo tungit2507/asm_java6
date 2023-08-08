@@ -1,6 +1,7 @@
 package com.ps23244.untils;
 
 import java.io.File;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -15,40 +16,61 @@ import org.springframework.web.multipart.MultipartFile;
 public class ParamService {
 	@Autowired
 	HttpServletRequest request;
-	
+
 	@Autowired
 	HttpServletResponse response;
-	
+
 	public String getString(String name, String defaultValue) {
 		String value = request.getParameter(name);
 		return value != null ? value : defaultValue;
 	}
+
 	public int getInt(String name, int defaultValue) {
 		return defaultValue;
 
 	}
+
 	public double getDouble(String name, double defaultValue) {
 		return defaultValue;
 	}
+
 	public boolean getBoolean(String name, boolean defaultValue) {
 		String value = getString(name, String.valueOf(defaultValue));
 		return Boolean.parseBoolean(value);
 
 	}
-	
-	public Date getDate(String name, String pattern){
-		String value = getString(name, "");
+
+//	public Date getDate(String name, String pattern) {
+//		String value = getString(name, "");
+//		try {
+//			return new SimpleDateFormat(pattern).parse(value);
+//		} catch (Exception e) {
+//			throw new RuntimeException(e);
+//		}
+//	}
+
+	public Date getDate(String paramName, String dateFormat) {
+		String dateStr = getString(paramName, "");
+
+		if (dateStr == null || dateStr.isEmpty()) {
+			// Return null if the date string is empty or null
+			return null;
+		}
+
+		SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
 		try {
-			return new SimpleDateFormat(pattern).parse(value);
-		} catch (Exception e) {
-			throw new RuntimeException(e);
+			return sdf.parse(dateStr);
+		} catch (ParseException e) {
+			// Handle the parsing exception here
+			e.printStackTrace();
+			return null;
 		}
 	}
-	
+
 	public File save(MultipartFile file, String path) {
-		if(!file.isEmpty()) {
+		if (!file.isEmpty()) {
 			File dir = new File(request.getServletContext().getRealPath(path));
-			if(!dir.exists()) {
+			if (!dir.exists()) {
 				dir.mkdirs();
 			}
 			try {
@@ -61,9 +83,5 @@ public class ParamService {
 		}
 		return null;
 	}
-
-
-
-
 
 }

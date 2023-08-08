@@ -15,42 +15,41 @@ import com.ps23244.entity.Account;
 
 @Component
 public class LoggerInterceptor implements HandlerInterceptor{
-	@Autowired
-	SessionService sessionService;
-	
-	@Autowired
-	ShoppingCartService shoppingCartService;
-	
-	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-			throws Exception {
-		
-		return true;
-	}
-	
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-		Account user = sessionService.get("user");
-		if(user!=null) {
-			request.setAttribute("isLogin", true);
-			request.setAttribute("admin", user.isAdmin());
-			request.setAttribute("fullname", user.getFullname());
-			request.setAttribute("username", user.getUsername());
-			request.setAttribute("photo", user.getPhoto());
-			request.setAttribute("email", user.getEmail());
-		}else {
-			request.setAttribute("isLogin", false);
-		}
-		request.setAttribute("cart", shoppingCartService);
-		System.out.println("LoggerInterceptor.postHandle() - " + request.getRequestURI());
-	}
-
-	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
-		System.out.println("LoggerInterceptor.afterCompletion() - " + request.getRequestURI());
-		
-	}
-		
+//	@Autowired
+//	SessionService sessionService;
+//	
+//	@Autowired
+//	ShoppingCartService shoppingCartService;
+//	
+//	@Override
+//	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+//			throws Exception {
+//		
+//		return true;
+//	}
+//	
+//	@Override
+//	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+//			ModelAndView modelAndView) throws Exception {
+//		Account user = sessionService.get("authentication");
+//		if(user!=null) {
+//			request.setAttribute("isLogin", true);
+//			request.setAttribute("admin", user.isAdmin());
+//			request.setAttribute("fullname", user.getFullname());
+//			request.setAttribute("username", user.getUsername());
+//			request.setAttribute("photo", user.getPhoto());
+//			request.setAttribute("email", user.getEmail());
+//			request.setAttribute("auth", user.getAuthorities());
+//		}else {
+//			request.setAttribute("isLogin", false);
+//		}
+//		request.setAttribute("cart", shoppingCartService);
+//	}
+//
+//	@Override
+//	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+//			throws Exception {
+//		
+//	}
+//		
 }

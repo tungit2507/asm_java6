@@ -16,26 +16,31 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 import lombok.ToString;
+
 @Data
 @Entity
 @Table(name = "orders")
-public class Order implements Serializable{
+public class Order implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
-	
 	String address;
 	String sdt;
 	boolean confirmation;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "createdate")
 	Date createDate = new Date();
-	
+
 	@ToString.Exclude
-	@ManyToOne @JoinColumn(name = "username")
+	@ManyToOne
+	@JoinColumn(name = "username")
 	Account account;
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "order")
 	List<OrderDetail> orderDetails;
 }
