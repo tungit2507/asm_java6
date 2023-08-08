@@ -3,11 +3,7 @@ app = angular.module("app", ["ngRoute"]);
 app.config(function($routeProvider) {
 	$routeProvider
 		.when("/account", {
-			templateUrl: "/admin/accountlist.html",
-			controller: "account-ctrl"
-		})
-		.when("/accountctrl", {
-			templateUrl: "/admin/accountcontroller.html",
+			templateUrl: "/admin/indexaccount.html",
 			controller: "account-ctrl"
 		})
 		.when("/category", {
