@@ -1,33 +1,28 @@
+<div class="wrapper" >
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+<div class="panel panel-default">
 
-<div class="wrapper">
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section>
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="page-wrapper bg-gra-03 " style="height: 600px">
-                        <div class="container" id="main-content" style="padding-top: 100px">
-                            <div class="row">
-                                <!-- end LEFT AREA -->
-                                <div class="col-md-4"></div>
-                                <!-- RIGHT AREA -->
-                                <div class="col-md-4">
-                                    <a href="#!category" class="btn bg-gra-03 p-2 mb-3 btn-xs pull-right"> Danh sách loại </a>
-                                    <form  >
+	<div class="panel-body">
+		
+			<div class="col-md-8">
+				<a ng-click="listClick()" class="btn bg-gra-03 p-2 mb-3 btn-xs pull-right"> Danh sách loại </a>
+				<form>
+					<div class="form-group">
+						<input class="form-control" type="text" ng-model="form.id"
+							placeholder="Mã loại" />
+						<ul ng-show="formErrors.id" class="text-danger">
+							<li ng-repeat="error in formErrors.id">{{ error }}</li>
+						</ul>
+					</div>
 
-                                        <div class="form-group">
-                                            <input class="form-control" type="text" ng-model="form.id" placeholder="Mã loại" />
-                                            <ul ng-show="formErrors.id" class="text-danger">
-                                                <li ng-repeat="error in formErrors.id">{{ error }}</li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input class="form-control" type="text" ng-model="form.name" placeholder="Tên loại" />
-                                            <ul ng-show="formErrors.name" class="text-danger">
-                                                <li ng-repeat="error in formErrors.name">{{ error }}</li>
-                                            </ul>
-                                        </div>
+					<div class="form-group">
+						<input class="form-control" type="text" ng-model="form.name"
+							placeholder="Tên loại" />
+						<ul ng-show="formErrors.name" class="text-danger">
+							<li ng-repeat="error in formErrors.name">{{ error }}</li>
+						</ul>
+					</div>
 
 					<div class="form-group text-center">
 						<button type="button" ng-click="create()" class="btn btn-success">

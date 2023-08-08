@@ -32,9 +32,7 @@ import com.ps23244.service.AccountService;
 import com.ps23244.service.CategoryService;
 
 @CrossOrigin("*")
-
 @RestController
-
 @RequestMapping("/rest/categories")
 public class CategoryRestController {
 
@@ -65,7 +63,6 @@ public class CategoryRestController {
 
 	@DeleteMapping("{id}")
 	public void delete(@PathVariable("id") String id) {
-		categoryService.delete(id);
 		Category category =  categoryService.findById(id);
 		category.setIsActive(false);
 		categoryService.save(category);
