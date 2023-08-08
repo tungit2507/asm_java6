@@ -20,7 +20,9 @@
 				<div class="mb-3">
 					<div class="form-control">{{order.createDate | date : 'dd-MM-yyyy'}}</div>
 				</div>
-
+				<div class="mb-3">
+					<div class="form-control">{{$auth.user.fullname}} ({{$auth.user.email}})</div>
+				</div>
 				<div class="mb-3">
 					<input ng-model="order.sdt" class="form-control" placeholder="Số điện thoại" />
 				</div>
@@ -51,7 +53,9 @@
 				</div>
 
 				<div class="mb-3">
-					<button ng-click="order.purchase()" type="submit" class="btn w-100 text-white" style="background-color: rgb(88, 166, 166);">ĐẶT HÀNG</button>
+					<button ng-click="order.purchase()" type="submit" class="btn w-100 text-white"
+						style="background-color: rgb(88, 166, 166);"
+					>ĐẶT HÀNG</button>
 				</div>
 				<hr class="mb-3">
 				<div class="mb-3">

@@ -24,4 +24,5 @@ public interface OrderService {
 
 	public Order createData(JsonNode orderData);
 
+	public List<Order> findByUsername(String username);
 }

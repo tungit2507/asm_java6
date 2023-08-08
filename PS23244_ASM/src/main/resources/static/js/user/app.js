@@ -1,7 +1,3 @@
-/**
- * 
- */
-const app = angular.module("app", []);
 app.controller("cart-ctrl", function($scope, $http) {
 	var $cart = $scope.cart = {
 		items: [],
@@ -67,9 +63,10 @@ app.controller("cart-ctrl", function($scope, $http) {
 	// Đặt hàng
 	$scope.order = {
 		get account() {
-			/*return { username: $auth.user.username }*/
+			return { username: $auth.user.username }
 		},
 		createDate: new Date(),
+		sdt: "",
 		address: "",
 		get orderDetails() {
 			return $cart.items.map(item => {
@@ -86,7 +83,7 @@ app.controller("cart-ctrl", function($scope, $http) {
 			$http.post("/rest/orders", order).then(resp => {
 				alert("Đặt hàng thành công!");
 				$cart.clear();
-				location.href = "/home/order-detail" + resp.data.id;
+				location.href = "/home/order-detail/" + resp.data.id;
 			}).catch(error => {
 				alert("Đặt hàng lỗi!")
 				console.log(error)

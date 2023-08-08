@@ -1,4 +1,5 @@
-	<!DOCTYPE html>
+
+<!DOCTYPE html>
 <html xmlns="http://www.thymeleaf.org" th:replace="~{/user/layout.html :: user(~{::body})}">
 <head>
 <meta charset="UTF-8">
@@ -21,22 +22,22 @@
 										<div class="alert alert-success col row mx-1" role="alert">Đặt hàng thành công!</div>
 										<div class="mx-1 mb-2">
 											<h5>
-												<strong>Mã loại:</strong> [[${order.id }]]
+												<strong>Mã loại:</strong> ${order.id}
 											</h5>
 											<h5>
-												<strong>Họ Tên:</strong> [[${order.account.fullname }]]
+												<strong>Họ Tên:</strong>${order.account.fullname }
 											</h5>
 											<h5>
-												<strong>Số điện thoại:</strong> [[${order.sdt}]]
+												<strong>Số điện thoại:</strong> ${order.sdt}
 											</h5>
 											<h5>
-												<strong>Địa chỉ:</strong> [[${order.address}]]
+												<strong>Địa chỉ:</strong> ${order.address}
 											</h5>
 											<h5>
-												<strong>Email:</strong> [[${order.account.email }]]
+												<strong>Email:</strong> ${order.account.email }
 											</h5>
 											<h5>
-												<strong>Ngày tạo:</strong>[[ ${order.createDate }]]
+												<strong>Ngày tạo:</strong>${order.createDate }
 											</h5>
 										</div>
 										<!-- <div class="table" style="max-width: 100%">

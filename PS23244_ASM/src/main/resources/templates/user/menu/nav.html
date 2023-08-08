@@ -38,7 +38,9 @@
 					</ul>
 				</li>
 				<li class="nav-item dropdown me-2 m-1">
-					<a class="nav-link active dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					<a class="nav-link active dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown"
+						aria-expanded="false"
+					>
 						<i class="bi bi-geo-alt"></i> Hồ Chí Minh
 					</a>
 					<ul class="dropdown-menu">
@@ -51,7 +53,9 @@
 					</ul>
 				</li>
 				<form action="/home/search" method="post" class="search-bar float-left m-1 pt-3">
-					<input class="search ps-1" name="keywords" type="text" style="width: 320px; height: 27px; background-color: white" placeholder="Bạn cần tìm gì?">
+					<input class="search ps-1" name="keywords" type="text" style="width: 320px; height: 27px; background-color: white"
+						placeholder="Bạn cần tìm gì?"
+					>
 					<button class="submit" style="background-color: white; border: none">
 						<i class="bi bi-search"></i>
 					</button>
@@ -73,21 +77,21 @@
 						giỏ hàng
 					</a>
 				</li>
-				<ul class="nav-item me-2 m-1" th:if="${isLogin}">
-					<li th:if="${admin}">
+				<ul class="nav-item me-2 m-1" th:if="${#request.remoteUser}">
+					<li th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAF')}">
 						<a th:href="@{/admin/index}" class="login-panel text-white text-decoration-none">
 							<i class="bi bi-person-fill"></i> Admin
 						</a>
 					</li>
-					<div class="top-social" style="padding-top: 10px" th:if="${isLogin}">
-						<a th:href="@{/home/profile}" class="text-primary text-decoration-none" th:text="${fullname}"></a>
+					<div class="top-social" style="padding-top: 10px">
+						<a th:href="@{/home/profile}" class="text-primary text-decoration-none">{{$auth.user.fullname}}</a>
 						<span style="color: white">|</span>
 						<a class="text-danger text-decoration-none" id="btnLogOff" th:href="@{/home/logout}" title="">Đăng xuất</a>
 					</div>
 				</ul>
 
-				<li class="nav-item me-2 m-1" th:if="${!isLogin}">
-					<a class="nav-link active text-light" th:href="@{/home/login}">
+				<li class="nav-item me-2 m-1" th:unless="${#request.remoteUser}">
+					<a class="nav-link active text-light" th:href="@{/home/login/form}">
 						<i class="bi bi-person-circle"></i> Đăng nhập
 					</a>
 				</li>

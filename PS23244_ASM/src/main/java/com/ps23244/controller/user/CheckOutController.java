@@ -44,7 +44,7 @@ public class CheckOutController {
 		return "user/checkout";
 	}
 
-	@RequestMapping("order-detail/{id}")
+	@RequestMapping("/order-detail/{id}")
 	public String orderDetail(Model model, @PathVariable("id") Long id) {
 		model.addAttribute("order", orderService.findID(id));
 		return "user/orderdetaill";

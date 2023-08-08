@@ -5,12 +5,11 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -39,9 +38,14 @@ public class Account implements Serializable {
 	@Column(nullable = false, columnDefinition = "bit default 0")
 	boolean activated;
 
+	@Column(nullable = false, columnDefinition = "bit default 0")
 	boolean admin;
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "account")
 	List<Order> orders;
-
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
+	List<Authority> authorities;
 }
