@@ -34,12 +34,12 @@ public class Order implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "createdate")
 	Date createDate = new Date();
-	
+
 	@ToString.Exclude
 	@ManyToOne
 	@JoinColumn(name = "username")
 	Account account;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "order")
 	List<OrderDetail> orderDetails;

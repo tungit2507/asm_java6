@@ -7,27 +7,43 @@
 						<thead>
 							<tr>
 								<th style="font-weight: bolder; font-size: 18px">
-									<a ng-href="/order/list?field=id&amp;sort={{field}}&amp;p={{page.number}}"> Mã đặt hàng </a>
+									<button class="btn btn-info btn-xs confirm-btn" ng-click="sortOrders('id')">
+										Mã Đặt Hàng
+									</button>
 								</th>
 								<th style="font-weight: bolder; font-size: 18px">
-									<a ng-href="/order/list?field=account.username&amp;sort={{field}}&amp;p={{page.number}}"> Tên khách hàng </a>
+									<button class="btn btn-info btn-xs confirm-btn" ng-click="sortOrders('custormerName')">
+										Tên khách hàng
+									</button>
 								</th>
 
 								<th style="font-weight: bolder; font-size: 18px">
-									<a ng-href="/order/list?field=createDate&amp;sort={{field}}&amp;p={{page.number}}"> Ngày đặt hàng </a>
+									<button class="btn btn-info btn-xs confirm-btn" ng-click="sortOrders('createDate')">
+										Ngày đặt hàng
+									</button>
 								</th>
 								<th style="font-weight: bolder; font-size: 18px">
-									<a ng-href="/order/list?field=sdt&amp;sort={{field}}&amp;p={{page.number}}"> Số điện thoại </a>
+
+									<button class="btn btn-info btn-xs confirm-btn" ng-click="sortOrders('phoneNumber')">
+										Số điện thoại
+									</button>
 								</th>
 
 								<th style="font-weight: bolder; font-size: 18px">
-									<a ng-href="/order/list?field=address&amp;sort={{field}}&amp;p={{page.number}}"> Địa chỉ </a>
+									<button class="btn btn-info btn-xs confirm-btn" ng-click="sortOrders('address')">
+										Địa chỉ
+									</button>
 								</th>
 								<th style="font-weight: bolder; font-size: 18px">
-									<a ng-href="/order/list?field=confirmation&amp;sort={{field}}&amp;p={{page.number}}"> Xác nhận đơn hàng </a>
+									<button class="btn btn-info btn-xs confirm-btn" ng-click="sortOrders('confirmation')">
+										Xác nhận đơn hàng
+									</button>
 								</th>
 
-								<th style="font-weight: bolder; font-size: 18px">Đơn hàng</th>
+								<th style="font-weight: bolder; font-size: 18px"><button class="btn btn-info btn-xs confirm-btn" disabled>
+									 đơn hàng
+								</button></th>
+
 							</tr>
 
 						</thead>
@@ -43,32 +59,25 @@
 									<a ng-href="/admin/orderdetail/{{item.id}}">Chi tiết đơn hàng</a>
 								</td>
 								<td>
-									<div ng-if="!order.confirmation">
-										<a class="btn btn-info btn-xs confirm-btn" ng-href="/order/confirm/{{item.id}}">
+									<div ng-if="!item.confirmation">
+										<button class="btn btn-info btn-xs confirm-btn" ng-click="confirm(item.id)">
 											<i class="bi bi-pencil-square"></i> Xác nhận
-										</a>
+										</button>
 									</div>
-									<a href="/order/delete/{{item.id}}" style="font-size: 14px" class="btn btn-danger btn-xs"
-										ng-click="confirmDeletion()" ng-show="order.confirmation || order.confirmation === undefined"
-										ng-hide="deleteButtonClicked"
-									>
-										<i class="bi bi-x-lg"></i> Xóa
-									</a>
-									<div ng-show="deleteButtonClicked">
-										<p>Bạn có chắc muốn xóa đơn hàng này?</p>
-										<button class="btn btn-danger btn-xs" ng-click="deleteOrder()">Xóa</button>
-										<button class="btn btn-default btn-xs" ng-click="cancelDelete()">Hủy</button>
-									</div>
-								</td>
-							</tr>
 
+
+								</td>
+								<td><a  style="font-size: 14px" class="btn btn-danger btn-xs" ng-click="delete(item.id)">
+									<i class="bi bi-x-lg"></i> Xóa
+								</a></td>
+							</tr>
 						</tbody>
 					</table>
 					<div class=" text-center">
-						<a ng-href="/order/list?p=0" class="btn btn-success">First</a>
-						<a ng-href="/order/list?p={{page.number - 1}}" class="btn btn-primary">Previous</a>
-						<a href="/order/list?p={{page.number + 1}}" class="btn btn-danger"> Next </a>
-						<a ng-href="/order/list?p={{page.totalPages - 1}}" class="btn btn-warning">Last</a>
+						<a ng-click="pager.first()" class="btn btn-success">First</a>
+						<a ng-click="pager.prev()" class="btn btn-primary">Previous</a>
+						<a ng-click="pager.next()" class="btn btn-danger"> Next </a>
+						<a ng-click="pager.last()" class="btn btn-warning">Last</a>
 					</div>
 				</div>
 
@@ -76,3 +85,5 @@
 		</section>
 	</div>
 </div>
+
+

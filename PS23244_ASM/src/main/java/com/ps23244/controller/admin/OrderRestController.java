@@ -1,9 +1,6 @@
 package com.ps23244.controller.admin;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,6 +20,8 @@ import com.ps23244.dao.OrderDAO;
 import com.ps23244.entity.Order;
 import com.ps23244.service.OrderService;
 
+import javax.annotation.PostConstruct;
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/rest/orders")
@@ -30,63 +29,95 @@ public class OrderRestController {
 	@Autowired
 	OrderService orderService;
 
-	@GetMapping
-	public List<Order> getAll() {
-		return orderService.findAll();
+
+
+
+
+
+
+
+
+	Map<String, Boolean> softMap =  new HashMap<>();
+
+	List<Order> listOrder = new ArrayList<>();
+	@PostConstruct
+	public void init(){
+		softMap.put("id",true);
+		softMap.put("custormerName",true);
+		softMap.put("createDate",true);
+		softMap.put("phoneNumber",true);
+		softMap.put("address",true);
+		softMap.put("confirmation",true);
 	}
 
-//	public List<Order> Order = new ArrayList<Order>();
-//
-//	@Autowired
-//	OrderDAO dao;
-//
-//	@RequestMapping("/list")
-//	public String index(Model model, @RequestParam("p") Optional<Integer> p,
-//
-//			@RequestParam("field") Optional<String> field, @RequestParam("sort") Optional<String> sort) {
-//		Sort.Direction direction = Sort.Direction.DESC;
-//
-//		Order item = new Order();
-//		model.addAttribute("item", item);
-//
-//		Sort.Order order = new Sort.Order(direction, field.orElse("createDate"));
-//		Sort pageSort = Sort.by(order);
-//
-//		model.addAttribute("field", field.orElse("price").toUpperCase());
-//
-//		// Lấy danh sách sản phẩm đã được sắp xếp List<Order> sortedItems =
-//		dao.findAll(pageSort);
-//		model.addAttribute("items", sortedItems);
-//
-//		// Phân trang Pageable pageable = PageRequest.of(p.orElse(0), 5, pageSort);
-//		Page<Order> page = dao.findAll(pageable);
-//		model.addAttribute("page", page);
-//		return "admin/orderlist";
-//	}
-//
-//	@RequestMapping("/controller")
-//	public String control(Model model) {
-//		Order item = new Order();
-//		model.addAttribute("item", item);
-//		return "admin/ordercontroller";
-//	}
-//
-//	@RequestMapping("/confirm/{id}")
-//	public String confirmOrder(@PathVariable("id") long id) {
-//		Optional<Order> optionalOrder = dao.findById(id);
-//		if (optionalOrder.isPresent()) {
-//			Order order = optionalOrder.get();
-//			order.setConfirmation(true);
-//			dao.save(order);
-//		}
-//
-//		return "redirect:/order/list";
-//	}
-//
-//	@RequestMapping("/delete/{id}")
-//	public String deleteOrder(@PathVariable("id") long id) {
-//		dao.deleteById(id);
-//		return "redirect:/order/list";
-//	}
+
+	@GetMapping("/getAll")
+	public List<Order> getAll() {
+		this.listOrder = orderService.findAll();
+		return this.listOrder;
+	}
+
+	@GetMapping("/confirm")
+	public List<Order> confirm(Long id){
+		Order order = orderService.findID(id);
+		orderService.Confirm(order);
+		return this.getAll();
+	}
+
+	@GetMapping("findByDate")
+	public List<Order> findByDate(Date beginDate, Date finishDate){
+		return orderService.reportDate(beginDate,finishDate);
+	}
+
+	@GetMapping("delete")
+	public List<Order> Delete(Long id){
+		Order order = orderService.findID(id);
+		orderService.Delete(order);
+		return this.getAll();
+	}
+
+
+
+	@GetMapping("sortOrders")
+	public List<Order> sortOrders(String sortBy) {
+		softMap.put(sortBy,!softMap.get(sortBy));
+		Collections.sort(this.listOrder, new Comparator<Order>() {
+			@Override
+			public int compare(Order o1, Order o2) {
+				int result;
+				switch (sortBy) {
+					case "id":
+						result = o1.getId().compareTo(o2.getId());
+						break;
+					case "custormerName":
+						result = o1.getAccount().getFullname().compareTo(o2.getAccount().getFullname());
+						break;
+					case "createDate":
+						result = o1.getCreateDate().compareTo(o2.getCreateDate());
+						break;
+					case "phoneNumber":
+						result = o1.getSdt().compareTo(o2.getSdt());
+						break;
+					case "address":
+						result = o1.getAddress().compareTo(o2.getAddress());
+						break;
+					case "confirmation":
+						result = Boolean.compare(o1.isConfirmation(), o2.isConfirmation());
+						break;
+					default:
+						throw new IllegalArgumentException("Invalid sortBy option: " + sortBy);
+				}
+
+				if (softMap.get(sortBy)) {
+					return result;
+				} else {
+					return -result;
+				}
+			}
+		});
+
+		return this.listOrder;
+	}
+
 
 }

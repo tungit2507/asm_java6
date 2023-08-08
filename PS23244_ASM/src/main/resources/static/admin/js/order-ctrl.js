@@ -1,42 +1,40 @@
 app.controller("order-ctrl", function($scope, $http) {
+
+
 	$scope.initialize = function() {
-		$http.get("/rest/products").then(resp => {
-			$scope.products = resp.data;
-		})
-		$http.get("/rest/accounts").then(resp => {
-			$scope.accounts = resp.data;
-		})
-		$http.get("/rest/orders").then(resp => {
+		$http.get("/rest/orders/getAll").then(resp => {
 			$scope.items = resp.data;
 		})
-
 	}
 
-	$scope.reset = function() {
-
+	$scope.confirm = function (id) {
+		$http.get('/rest/orders/confirm',{ params: { id: id } })
+			.then(function(response) {
+				$scope.items = response.data;
+			}, function(error) {
+				console.error('Error confirming order:', error);
+			});
 	}
 
-	$scope.edit = function(item) {
-
+	$scope.delete = function(id) {
+			$http.get('/rest/orders/delete', { params: { id: id } })
+				.then(function(response) {
+					$scope.items = response.data;
+				}, function(error) {
+					console.error('Error deleting order:', error);
+				});
 	}
 
-	$scope.create = function() {
-
+	$scope.sortOrders =  function (SortBy) {
+		$http.get('/rest/orders/sortOrders', { params: {sortBy : SortBy} })
+			.then(function(response) {
+				$scope.items = response.data;
+			}, function(error) {
+				console.error('Error deleting order:', error);
+			});
 	}
 
-	$scope.update = function() {
 
-	}
-
-	$scope.delete = function(item) {
-
-	}
-
-	$scope.imageChanged = function(files) {
-
-	}
-
-	$scope.initialize();
 
 	$scope.pager = {
 		page: 0,
@@ -67,4 +65,6 @@ app.controller("order-ctrl", function($scope, $http) {
 			this.page--;
 		}
 	}
+
+	$scope.initialize();
 });

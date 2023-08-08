@@ -14,21 +14,46 @@ import com.ps23244.service.OrderService;
 @Service
 public class OrderServiceImpl implements OrderService{
 
-	@Autowired
-	OrderDAO dao;
-	@Override
-	public List<Order> findAll() {
-		return dao.findAll();
-	}
+    @Autowired
+    OrderDAO orderDAO;
 
-	@Override
-	public List<Order> findID(Long id) {
-		return dao.findID(id);
-	}
+    @Override
+    public List<Order> findAll() {
+        return orderDAO.findAll();
+    }
 
-	@Override
-	public List<Order> reportDate(Date firstdate, Date lastdate) {
-		return dao.findOrderByDate(firstdate, lastdate);
-	}
+    @Override
+    public Order findID(Long id) {
+        return orderDAO.findById(id).orElse(new Order());
+    }
 
+    @Override
+    public List<Order> reportDate(Date firstdate, Date lastdate) {
+       return orderDAO.findOrderByDate(firstdate,lastdate);
+    }
+
+    @Override
+    public Order Update(Order order) {
+        orderDAO.save(order);
+        return order;
+    }
+
+    @Override
+    public Order Create(Order order) {
+        orderDAO.save(order);
+        return order;
+    }
+
+    @Override
+    public Order Delete(Order order) {
+        orderDAO.delete(order);
+        return order;
+    }
+
+    @Override
+    public Order Confirm(Order order) {
+        order.setConfirmation(true);
+        this.Update(order);
+        return order;
+    }
 }

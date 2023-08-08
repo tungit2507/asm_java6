@@ -1,7 +1,5 @@
 <div class="wrapper" ng-if="items">
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section>
             <div class="content-header">
                 <div class="container-fluid">
@@ -57,7 +55,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="item in pager.items" style="height: 20px; line-height: 40px;">
+                                <tr ng-repeat="item in items" style="height: 20px; line-height: 40px;">
                                     <td>{{ item.id }}</td>
                                     <td>
                                         <img ng-src="/image/{{ item.product.image }}" alt="" style="width: 50px" />
@@ -71,15 +69,8 @@
                             </tbody>
                         </table>
                     </div>
-                    <!-- /.Left col -->
-                    <!-- right col (We are only adding the ID to make the widgets sortable)-->
-                </div>
-                <!-- /.row (main row) -->
+                 </div>
             </div>
-            <!-- /.container-fluid -->
         </section>
-        <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
-    <!-- Control Sidebar -->
 </div>
