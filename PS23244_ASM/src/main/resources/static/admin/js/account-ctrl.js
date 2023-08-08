@@ -21,8 +21,13 @@ app.controller("account-ctrl", function($scope, $http){
 
 	}
 
-	$scope.delete = function(item){
-
+	$scope.delete = function(username){
+			$http.get('/rest/accounts/delete', { params: { username: username } })
+				.then(function(response) {
+					$scope.items = response.data;
+				}, function(error) {
+					console.error('Error deleting account:', error);
+				});
 	}
 	
 	$scope.imageChanged = function(files){
@@ -34,30 +39,32 @@ app.controller("account-ctrl", function($scope, $http){
 	$scope.pager = {
 		page: 0,
 		size: 10,
-		get items(){
-			if(this.page < 0){
+		get items() {
+			if (this.page < 0) {
 				this.last();
 			}
-			if(this.page >= this.count){
+			if (this.page >= this.count) {
 				this.first();
 			}
-			var start = this.page*this.size;
+			var start = this.page * this.size;
 			return $scope.items.slice(start, start + this.size)
 		},
-		get count(){
+		get count() {
 			return Math.ceil(1.0 * $scope.items.length / this.size);
 		},
-		first(){
+		first() {
 			this.page = 0;
 		},
-		last(){
+		last() {
 			this.page = this.count - 1;
 		},
-		next(){
+		next() {
 			this.page++;
 		},
-		prev(){
+		prev() {
 			this.page--;
 		}
 	}
+
+	$scope.initialize();
 });

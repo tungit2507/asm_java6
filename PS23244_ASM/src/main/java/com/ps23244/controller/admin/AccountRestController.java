@@ -62,9 +62,12 @@ public class AccountRestController {
 		return accountService.update(account);
 	}
 
-	@DeleteMapping("{id}")
-	public void delete(@PathVariable("id") String id) {
-		accountService.delete(id);
+	@GetMapping("delete")
+		public List<Account> Delete(String username){
+			Account account = accountService.findById(username);
+			accountService.delete(username);
+			return this.getAll();
+		
 	}
 //
 //	@RequestMapping("/list")
