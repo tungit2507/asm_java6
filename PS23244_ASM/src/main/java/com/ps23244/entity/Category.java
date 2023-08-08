@@ -25,8 +25,6 @@ public class Category implements Serializable{
 	String id;
 	@NotBlank(message="Vui lòng nhập tên loại !")
 	String name;
-	@Column(name = "isactive") 
-	Boolean isActive;
 	@JsonIgnore
 	@OneToMany(mappedBy = "category")
 	List<Product> products;

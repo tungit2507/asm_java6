@@ -44,7 +44,8 @@
 						<span class="text-decoration-underline"> đ</span>
 					</div>
 					<div class="ms-2 me-5 bg-light fs-6">Tặng thêm đến 1 triệu khi Thu đổi mới. giảm thêm 800.000đ khi mở thẻ TPBank</div>
-					<a th:href="@{'/home/cart/add/' + ${product.id}}" class="btn btn-outline-danger mt-1 mb-2">Thêm giỏ hàng</a>
+					<a  th:attr="ng-click=@{|cart.add(${product.id})|}" class="btn btn-outline-danger mt-1 mb-2">Thêm giỏ hàng</a>
+				<!-- th:href="@{'/home/cart/add/' + ${product.id}}" -->
 				</div>
 			</div>
 		</section>
@@ -86,7 +87,7 @@
 						<span class="text-decoration-underline"> đ</span>
 					</div>
 					<div class="ms-2 me-5 bg-light fs-6">Tặng thêm đến 1 triệu khi Thu đổi mới. giảm thêm 800.000đ khi mở thẻ TPBank</div>
-					<a th:href="@{'/home/cart/add/' + ${product.id}}" class="btn btn-outline-danger mt-1 mb-2">Thêm giỏ hàng</a>
+					<a  th:attr="ng-click=@{|cart.add(${product.id})|}"  class="btn btn-outline-danger mt-1 mb-2">Thêm giỏ hàng</a>
 				</div>
 			</div>
 		</section>

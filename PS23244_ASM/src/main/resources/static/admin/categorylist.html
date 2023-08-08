@@ -18,10 +18,12 @@
 								<td>{{ item.id }}</td>
 								<td>{{ item.name }}</td>
 								<td class="text-center">
-									<a href="" type="button" class="btn btn-primary" ng-click="edit(item)">
+
+									<a ng-click="edit(item)" class="btn btn-warning btn-xs">
 										<i class="bi bi-pencil-square"></i> Sửa
 									</a>
-									<a href="" type="button" class="btn btn-danger" ng-click="delete(item)">
+									<a ng-click="delete(item)"  class="btn btn-danger btn-xs">
+
 										<i class="bi bi-x-lg"></i> Xóa
 									</a>
 								</td>

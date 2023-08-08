@@ -12,10 +12,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.ps23244.dao.OrderDAO;
 import com.ps23244.entity.Order;
 import com.ps23244.service.OrderService;
@@ -28,15 +31,6 @@ import javax.annotation.PostConstruct;
 public class OrderRestController {
 	@Autowired
 	OrderService orderService;
-
-
-
-
-
-
-
-
-
 	Map<String, Boolean> softMap =  new HashMap<>();
 
 	List<Order> listOrder = new ArrayList<>();
@@ -50,7 +44,10 @@ public class OrderRestController {
 		softMap.put("confirmation",true);
 	}
 
-
+	@PostMapping
+	public Order purchase(@RequestBody JsonNode orderData) {
+		return orderService.createData(orderData);
+	}
 	@GetMapping("/getAll")
 	public List<Order> getAll() {
 		this.listOrder = orderService.findAll();

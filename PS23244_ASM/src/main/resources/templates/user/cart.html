@@ -19,9 +19,14 @@
 	<section class="me-5 ms-5">
 		<div class="row">
 			<div class="fw-bold fs-4">Chi tiết đơn hàng</div>
+
 			<hr />
 			<div class="d-flex justify-content-center">
-				<table class="table">
+				<div ng-if="!cart.items.length" class="panel-body text-center">
+					<h3 style="font-variant: small-caps;">Chưa có sản phẩm trong giỏ hàng</h3>
+					<a th:href="@{/home/index}" class="btn btn-info continue-shop">Tiếp tục mua sắm</a>
+				</div>
+				<table class="table" ng-if="cart.items.length">
 					<thead class="text-center">
 						<th>Ảnh</th>
 						<th class="p-name">Tên sản phẩm</th>
@@ -31,28 +36,28 @@
 						<th></th>
 					</thead>
 					<tbody class="align-middle text-center">
-						<tr th:each="item : ${cart.items}">
+						<tr ng-repeat="item in cart.items">
 							<form action="/home/cart/update" method="post">
-								<input type="hidden" name="id" th:value="${item.id}" />
+								<input type="hidden" name="id" ng-model="item.id" />
 								<td class="cart-pic first-row">
-									<img th:src="@{|/image/${item.image}|}" alt="" style="width: 50px" />
+									<img ng-src="/image/{{ item.image }}" alt="" style="width: 50px" />
 								</td>
 								<td class="cart-title first-row">
-									<h5 th:text="${item.name}"></h5>
+									<h5>{{item.name}}</h5>
 								</td>
-								<td class="p-price first-row" th:text="${item.price} + ' đ'"></td>
+								<td class="p-price first-row">{{item.price | number:0}}đ</td>
 								<td>
 									<div class="">
-										<a class="btn btn-light" style="width: 38px;" th:href="@{/home/cart/sub/{id}(id=${item.id})}">-</a>
-										<input name="qty" th:value="${item.qty}" min="0" th:onblur="this.form.submit()" class="text-center"
+										<a class="btn btn-light" style="width: 38px;" ng-click="decrementQty(item)">-</a>
+										<input name="qty" ng-model="item.qty" min="0" class="text-center"
 											style="width: 50px; height: 30px; font-size: 18px; font-weight: bolder; border: none"
 										/>
-										<a class="btn btn-light" style="width: 38px;" th:href="@{/home/cart/add/{id}(id=${item.id})}">+</a>
+										<a class="btn btn-light" style="width: 38px;" ng-click="incrementQty(item)">+</a>
 									</div>
 								</td>
-								<td class="total-price first-row" th:text="${item.price * item.qty} + ' đ'"></td>
+								<td class="total-price first-row">{{item.qty * item.price | number : 0}}đ</td>
 								<td class="close-td first-row">
-									<a class="btn btn-xs text-danger" style="font-weight: bolder" th:href="@{/home/cart/remove/{id}(id=${item.id})}">
+									<a class="btn btn-xs text-danger" style="font-weight: bolder" ng-click="cart.remove(item.id)">
 										<span class="glyphicon glyphicon-trash"></span>
 										xóa
 									</a>
@@ -63,21 +68,21 @@
 				</table>
 			</div>
 
-			<div class="row">
+			<div class="row" ng-if="cart.items.length">
 				<div class="col-md-4">
 					<div class="cart-buttons">
-						<a href="/home/index" class="btn btn-info continue-shop">Tiếp tục mua sắm</a>
-						<a href="/home/cart/clear" class="btn btn-danger up-cart">Xóa giỏ hàng</a>
+						<a th:href="@{/home/index}" class="btn btn-info continue-shop">Tiếp tục mua sắm</a>
+						<a ng-click="cart.clear()" class="btn btn-danger up-cart">Xóa giỏ hàng</a>
 					</div>
 				</div>
 				<div class="col-md-8 d-flex justify-content-end">
 					<div class="proceed-checkout">
 						<div class="fw-bold">
 							Tổng tiền
-							<span style="color: red" th:text="${cart.total} + ' đ'"></span>
+							<span style="color: red">{{cart.amount | number:0}}đ </span>
 						</div>
-						<a th:if="${!isLogin}" href="/home/login" class="btn btn-light">Thanh Toán</a>
-						<a th:if="${isLogin}" href="/home/checkout" class="btn btn-light">Thanh Toán</a>
+						<a th:if="${!isLogin}" th:href="@{/home/login}" class="btn btn-light">Thanh Toán</a>
+						<a th:if="${isLogin}" th:href="@{/home/checkout}" class="btn btn-light">Thanh Toán</a>
 					</div>
 				</div>
 			</div>

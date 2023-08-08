@@ -120,7 +120,8 @@
 					</div>
 				</div>
 				<div class="d-grid gap-2   mt-2">
-					<a class="btn" th:href="@{|/home/cart/add/${pr.id}|}" type="submit" style="background-color: orange;">
+				<!--  th:href="@{|/home/cart/add/${pr.id}|}" -->
+					<a class="btn" th:attr="ng-click=@{|cart.add(${pr.id})|}" style="background-color: orange;">
 						<span class="fw-bold fs-4 text-white">Thêm giỏ hàng</span>
 						<br>
 						<span class="text-white">Thỏa mái lựa chọn, xem hàng tại nhà</span>

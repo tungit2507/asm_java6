@@ -26,14 +26,14 @@
 				</thead>
 				<tbody>
 					<tr style="height: 50px; line-height: 50px;" th:each="item, state : ${page.content}">
-						<td class="p-price text-dark">${i=i+1}</td>
+						<td class="p-price text-dark" th:text="${state.count}"></td>
 						<td>
 							<img th:src="@{|/image/${item.product.image}|}" alt="" style="width: 50px" />
 						</td>
-						<td>[[${item.product.id}]]</td>
-						<td>${[${item.product.name}]</td>
-						<td style="color: red">[[${item.product.price}]] đ</td>
-						<td>[[${item.quantity }]]</td>
+						<td th:text="${item.product.id}"></td>
+						<td th:text="${item.product.name}"></td>
+						<td style="color: red" th:text="${item.product.price} + ' đ'"> đ</td>
+						<td th:text="${item.quantity}"></td>
 					</tr>
 				</tbody>
 			</table>

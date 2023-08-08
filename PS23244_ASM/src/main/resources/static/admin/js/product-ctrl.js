@@ -13,7 +13,8 @@ app.controller("product-ctrl", function($scope, $http) {
 	}
 
 	$scope.edit = function(item) {
-
+		$scope.form = angular.copy(item);
+		console.log($scope.form);
 	}
 
 	$scope.create = function() {
