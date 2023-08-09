@@ -11,11 +11,7 @@ app.config(function($routeProvider) {
 			controller: "category-ctrl"
 		})
 		.when("/product", {
-			templateUrl: "/admin/productlist.html",
-			controller: "product-ctrl"
-		})
-		.when("/productctrl", {
-			templateUrl: "/admin/productcontroller.html",
+			templateUrl: "/admin/indexproduct.html",
 			controller: "product-ctrl"
 		})
 			.when("/order", {

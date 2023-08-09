@@ -2,36 +2,85 @@ app.controller("product-ctrl", function($scope, $http) {
 	$scope.initialize = function() {
 		$http.get("/rest/categories").then(resp => {
 			$scope.categories = resp.data;
-		})
+		});
+
 		$http.get("/rest/products").then(resp => {
 			$scope.items = resp.data;
 		})
 	}
 
 	$scope.reset = function() {
-
+		$scope.form = {}
 	}
+	
+	
+	
+$scope.edit = function(item) {
+    $scope.form = angular.copy(item);
+    $scope.form.createDate = new Date(item.createDate);
+    $scope.form.available = item.available;
+    
+    if ($scope.form.category) {
+        var categoryId = item.category.id;
+        $scope.form.category.id = categoryId;
+    }
 
-	$scope.edit = function(item) {
-		$scope.form = angular.copy(item);
-		console.log($scope.form);
+
+    $(".nav-tabs a:eq(1)").tab("show");
+};
+
+
+
+
+
+
+	$scope.listClick = function() {
+		$(".nav-tabs a:eq(0)").tab("show");
 	}
-
+	$scope.click = function() {
+		$(".nav-tabs a:eq(1)").tab("show");
+	}
 	$scope.create = function() {
-
+		var item = angular.copy($scope.form);
+		$http.post(`/rest/products`, item).then(resp => {
+			$scope.items.push(resp.data);
+			
+			alert("Thêm mới sản phẩm thành công!");
+		}).catch(error => {
+			alert("Lỗi thêm mới sản phẩm!");
+			console.log("Error", error);
+		});
 	}
 
 	$scope.update = function() {
+    var item = angular.copy($scope.form);
+    $http.put(`/rest/products/${item.id}`, item).then(resp => {
+        var index = $scope.items.findIndex(p => p.id == item.id);
+        $scope.items[index] = item;
+        alert("Cập nhật sản phẩm thành công!");
+    }).catch(error => {
+        alert("Lỗi cập nhật sản phẩm!");
+        console.log("Error", error);
+    });
+};
 
-	}
 
 	$scope.delete = function(item) {
-
+		if (confirm("Bạn muốn xóa sản phẩm này?")) {
+			$http.delete(`/rest/produts/${item.id}`).then(resp => {
+				var index = $scope.items.findIndex(p => p.id == item.id);
+				$scope.items.splice(index, 1);
+				$scope.reset();
+				alert("Xóa sản phẩm thành công!");
+			}).catch(error => {
+				alert("Lỗi xóa sản phẩm!");
+				console.log("Error", error);
+			})
+		}
 	}
 
-	$scope.imageChanged = function(files) {
 
-	}
+
 
 	$scope.initialize();
 
