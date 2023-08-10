@@ -1,20 +1,22 @@
 <div class="wrapper">
 	<div class="content-wrapper">
 <ul class="nav nav-tabs" id="myTabs" role="tablist" >
-      <li class="nav-item" role="presentation">
-        <a href="" class="nav-link active" id="edit-tab" data-bs-toggle="tab" data-bs-target="#edit" role="tab"  aria-controls="edit" >CATEGORY EDIT</a>
+	<li class="nav-item" role="presentation">
+        <a href="" class="nav-link active" id="list-tab" data-bs-toggle="tab" data-bs-target="#list" role="tab" aria-controls="list" >CATEGORY LIST</a>
       </li>
       <li class="nav-item" role="presentation">
-        <a href="" class="nav-link " id="list-tab" data-bs-toggle="tab" data-bs-target="#list" role="tab" aria-controls="list" >CATEGORY LIST</a>
+        <a href="" class="nav-link " id="edit-tab" data-bs-toggle="tab" data-bs-target="#edit" role="tab"  aria-controls="edit" >CATEGORY EDIT</a>
       </li>
+      
  </ul>
 <div class="tab-content" id="myTabs">
-      <div class="tab-pane fade show active " id="edit" role="tabpanel" aria-labelledby="edit-tab">
-      		<div ng-include="'/admin/categorycontroller.html'"></div>
-      </div>
-      <div class="tab-pane fade " id="list" role="tabpanel" aria-labelledby="list-tab">
+<div class="tab-pane fade show active " id="list" role="tabpanel" aria-labelledby="list-tab">
       		<div ng-include="'/admin/categorylist.html'"></div>      
       </div>
+      <div class="tab-pane fade " id="edit" role="tabpanel" aria-labelledby="edit-tab">
+      		<div ng-include="'/admin/categorycontroller.html'"></div>
+      </div>
+      
 </div>
 </div>
 </div>
