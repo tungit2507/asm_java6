@@ -14,56 +14,54 @@
 </nav> -->
 
 	<div class="d-flex justify-content-center">
-		<form action="/home/order-detail" method="post" class="">
-			<div class="form-group" style="width: 400px;">
-				<div class="fw-bold mb-3 fs-4">Người mua/nhận hàng</div>
-				<div class="mb-3">
-					<div class="form-control">{{order.createDate | date : 'dd-MM-yyyy'}}</div>
-				</div>
-				<div class="mb-3">
-					<div class="form-control">{{$auth.user.fullname}} ({{$auth.user.email}})</div>
-				</div>
-				<div class="mb-3">
-					<input ng-model="order.sdt" class="form-control" placeholder="Số điện thoại" />
-				</div>
+		<div class="form-group" style="width: 400px;">
+			<div class="fw-bold mb-3 fs-4">Người mua/nhận hàng</div>
+			<div class="mb-3">
+				<div class="form-control">{{order.createDate | date : 'dd-MM-yyyy'}}</div>
+			</div>
+			<div class="mb-3">
+				<div class="form-control">{{$auth.user.fullname}} ({{$auth.user.email}})</div>
+			</div>
+			<div class="mb-3">
+				<input ng-model="order.sdt" class="form-control" placeholder="Số điện thoại" />
+			</div>
 
-				<div class="mb-3">
-					<input ng-model="order.address" class="form-control" placeholder="Địa chỉ nhận hàng" />
-				</div>
+			<div class="mb-3">
+				<input ng-model="order.address" class="form-control" placeholder="Địa chỉ nhận hàng" />
+			</div>
 
-				<div class="mb-3 place-order">
-					<h4>Sản phẩm</h4>
-					<div class="order-total">
-						<ul class="order-table">
-							<div ng-repeat="item in cart.items">
-								<div class="fw-normal">
-									<img alt="" ng-src="/image/{{ item.image }}" style="width: 50px" />
-									<span>{{item.name}}</span>
-									x
-									<span>{{item.qty}}</span>
-									<span style="color: red;">{{item.qty * item.price | number : 0}}đ</span>
-								</div>
+			<div class="mb-3 place-order">
+				<h4>Sản phẩm</h4>
+				<div class="order-total">
+					<ul class="order-table">
+						<div ng-repeat="item in cart.items">
+							<div class="fw-normal">
+								<img alt="" ng-src="/image/{{ item.image }}" style="width: 50px" />
+								<span>{{item.name}}</span>
+								x
+								<span>{{item.qty}}</span>
+								<span style="color: red;">{{item.qty * item.price | number : 0}}đ</span>
 							</div>
-							<div class="d-flex justify-content-end fw-bold total-price">
-								Tổng Tiền:
-								<span class="ms-2" style="color: red;">{{cart.amount | number:0}}đ</span>
-							</div>
-						</ul>
-					</div>
-				</div>
-
-				<div class="mb-3">
-					<button ng-click="order.purchase()" type="submit" class="btn w-100 text-white"
-						style="background-color: rgb(88, 166, 166);"
-					>ĐẶT HÀNG</button>
-				</div>
-				<hr class="mb-3">
-				<div class="mb-3">
-					<a href="/home/index" class="btn w-100 text-white" style="background-color: rgb(188, 207, 42);"> CẦN SẢN PHẨM
-						KHÁC? TIẾP TỤC MUA HÀNG </a>
+						</div>
+						<div class="d-flex justify-content-end fw-bold total-price">
+							Tổng Tiền:
+							<span class="ms-2" style="color: red;">{{cart.amount | number:0}}đ</span>
+						</div>
+					</ul>
 				</div>
 			</div>
-		</form>
+
+			<div class="mb-3">
+				<button ng-click="order.purchase()" type="submit" class="btn w-100 text-white"
+					style="background-color: rgb(88, 166, 166);"
+				>ĐẶT HÀNG</button>
+			</div>
+			<hr class="mb-3">
+			<div class="mb-3">
+				<a href="/home/index" class="btn w-100 text-white" style="background-color: rgb(188, 207, 42);"> CẦN SẢN PHẨM
+					KHÁC? TIẾP TỤC MUA HÀNG </a>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

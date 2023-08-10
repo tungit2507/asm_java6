@@ -19,12 +19,12 @@ public class InterceptorConfig implements WebMvcConfigurer {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(loggerInterceptor).addPathPatterns("/*", "/**");
-
-		registry.addInterceptor(auth)
-				.addPathPatterns ("/home/myorder/**", "/account/**", "/product/**", "/reportcategory/**", "/reportOrderByDate/**",
-						"/category/**", "/order/**", "/ordedetail**", "/admin/**")
-				.excludePathPatterns("/home/login");
+//		registry.addInterceptor(loggerInterceptor).addPathPatterns("/*", "/**");
+//
+//		registry.addInterceptor(auth)
+//				.addPathPatterns ("/home/myorder/**", "/account/**", "/product/**", "/reportcategory/**", "/reportOrderByDate/**",
+//						"/category/**", "/order/**", "/ordedetail**", "/admin/**", "/checkout/**")
+//				.excludePathPatterns("/home/login");
 	}
 
 }

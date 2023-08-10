@@ -19,7 +19,7 @@ import com.ps23244.untils.ParamService;
 import com.ps23244.untils.SessionService;
 
 @Controller
-@RequestMapping("home")
+
 public class CheckOutController {
 	@Autowired
 	ShoppingCartService shoppingCartService;
@@ -38,16 +38,16 @@ public class CheckOutController {
 	@Autowired
 	OrderDetailDAO orderDetailDAO;
 
-	@RequestMapping("checkout")
+	@RequestMapping("/home/checkout")
 	public String checkout(Model model) {
 		model.addAttribute("cart", shoppingCartService);
 		return "user/checkout";
 	}
 
-	@RequestMapping("/order-detail/{id}")
+	@RequestMapping("/home/order-detail/{id}")
 	public String orderDetail(Model model, @PathVariable("id") Long id) {
 		model.addAttribute("order", orderService.findID(id));
-		return "user/orderdetaill";
+		return "user/orderdetail";
 	}
 
 //	@RequestMapping("order-detail")
