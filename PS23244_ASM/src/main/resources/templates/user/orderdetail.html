@@ -13,81 +13,78 @@
 		<div class="wrapper wrapper--w790">
 			<div class="card card-5">
 				<div class="card-body">
-					<form method="POST">
-						<section>
-							<div class="container d-fex justify-content-center">
-								<div class="">
-									<div class="row">
+					<section th:object="${order}">
+						<div class="container d-fex justify-content-center">
+							<div class="row">
+								<div class="alert alert-success col row mx-1" role="alert">Đặt hàng thành công!</div>
+								<div class="mx-1 mb-2">
+									<h5>
+										<strong>Mã loại:</strong> [[*{id}]]
+									</h5>
+									<h5>
+										<strong>Họ Tên:</strong> [[*{account.fullname}]]
+									</h5>
+									<h5>
+										<strong>Số điện thoại:</strong>[[*{sdt}]]
+									</h5>
+									<h5>
+										<strong>Địa chỉ:</strong>[[*{address}]]
+									</h5>
+									<h5>
+										<strong>Email:</strong>[[*{account.email}]]
+									</h5>
+									<h5>
+										<strong>Ngày tạo:</strong>[[*{createDate}]]
+									</h5>
+								</div>
+								<div class="table" style="max-width: 100%">
+									<table>
+										<thead class="text-center">
+											<tr>
+												<th>ID</th>
+												<th>Tên</th>
+												<th>Giá</th>
+												<th>Số lượng</th>
+												<th>Tổng tiền</th>
+											</tr>
+										</thead>
+										<tbody class="text-center">
+											<tr th:each="detail: *{orderDetails}" th:object="${detail}">
+												<td th:text="*{product.id}"></td>
+												<td>
+													<h5 th:text="*{product.name}"></h5>
+												</td>
+												<td th:text="*{#numbers.formatDecimal(price, 0, 'COMMA', 0, 'POINT')}"></td>
+												<td th:text="*{quantity}"></td>
+												<td style="color: red;" th:text="*{#numbers.formatDecimal(price*quantity, 0, 'COMMA', 0, 'POINT')}"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="row">
+									<div class="col-md-6 mt-3">
 
-										<div class="alert alert-success col row mx-1" role="alert">Đặt hàng thành công!</div>
-										<div class="mx-1 mb-2">
-											<h5>
-												<strong>Mã loại:</strong> ${order.id}
-											</h5>
-											<h5>
-												<strong>Họ Tên:</strong>${order.account.fullname }
-											</h5>
-											<h5>
-												<strong>Số điện thoại:</strong> ${order.sdt}
-											</h5>
-											<h5>
-												<strong>Địa chỉ:</strong> ${order.address}
-											</h5>
-											<h5>
-												<strong>Email:</strong> ${order.account.email }
-											</h5>
-											<h5>
-												<strong>Ngày tạo:</strong>${order.createDate }
-											</h5>
-										</div>
-										<!-- <div class="table" style="max-width: 100%">
-											<table>
-												<thead class="text-center">
-													<tr>
-														<th>Số</th>
-														<th>Tên</th>
-														<th>Giá</th>
-														<th>Số lượng</th>
-														<th>Tổng tiền</th>
-													</tr>
-												</thead>
-												<tbody class="text-center">
-													<tr th:each="item, itemStat : ${items}">
-														<input type="hidden" name="id" th:value="${item.id}">
-														<td th:text="${itemStat.index + 1}"></td>
-														<td>
-															<h5 th:text="${item.product.name}"></h5>
-														</td>
-														<td th:text="${item.price} + ' đ'"></td>
-														<td th:text="${item.quantity}"></td>
-														<td style="color: red;" th:text="${item.price * item.quantity} + ' đ'"></td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-										<div class="row">
-											<div class="col-md-6 mt-3">
-
-												<a th:href="@{/home/index}" class="btn" style="background-color: rgb(188, 207, 42);">Tiếp tục mua hàng</a>
+										<a th:href="@{/home/index}" class="btn" style="background-color: rgb(188, 207, 42);">Tiếp tục mua hàng</a>
+									</div>
+									<!-- <div class="col-md-6">
+										<div th:with="total=0">
+											<div th:each="detail: *{orderDetails}" th:object="${detail}">
+												<div th:with="total=${total + (detail.price * detail.quantity)}"></div>
 											</div>
-											<div class="col-md-6">
-												<div th:with="total=0">
-													<div th:each="item : ${items}" th:with="total=${total + (item.price * item.quantity)}"></div>
-													<div class="" style="margin-top: 30px;">
-														<div class="d-flex justify-content-end ">
-															<div class="fw-bold">
-																Tổng tiền:
-																<span style="color: red">&nbsp &nbsp [[${total}]] đ</span>
-															</div>
-														</div>
+											<div style="margin-top: 30px;">
+												<div class="d-flex justify-content-end">
+													<div class="fw-bold">
+														Tổng tiền:
+														<span style="color: red">&nbsp;&nbsp;[[${total}]] đ</span>
 													</div>
 												</div>
 											</div>
-										</div> -->
+										</div>
 									</div>
+ -->
 								</div>
-						</section>
-					</form>
+							</div>
+					</section>
 				</div>
 			</div>
 		</div>
