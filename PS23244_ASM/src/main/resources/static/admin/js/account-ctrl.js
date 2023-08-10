@@ -11,13 +11,13 @@ app.controller("account-ctrl", function($scope, $http){
 	
 	$scope.edit = function(item){
 		$scope.form = angular.copy(item);
-		$(".nav-tabs a:eq(0)").tab("show");
+		$(".nav-tabs a:eq(1)").tab("show");
 	}
 	$scope.click = function(){		
-		$(".nav-tabs a:eq(0)").tab("show");
+		$(".nav-tabs a:eq(1)").tab("show");
 	}
 	$scope.listClick = function(){	
-		$(".nav-tabs a:eq(1)").tab("show");
+		$(".nav-tabs a:eq(0)").tab("show");
 	}
 	$scope.create = function(){
 		var item = angular.copy($scope.form);
